@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temerature Converter</title>
+    <link rel="shortcut icon" class="documentlogo" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Temperature Convertor</title>
+
+    <style>
+        /* Font Import for Cursive Text */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400&display=swap');
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #4a90e2;
+            font-size: 3rem;
+            text-shadow: 0 0 8px rgba(74, 144, 226, 0.7);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        header h1:hover {
+            color: #9b59b6;
+            text-shadow: 0 0 15px rgba(155, 89, 182, 0.9);
+        }
+
+        body {
+            /* display: flex; */
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            height: 100vh;
+            /* Full height of the viewport */
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .temp-ct {
+            text-align: center;
+            /* Center text */
+        }
+
+
+        /* Converter Section Styles */
+
+
+        #converter {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #converter h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+            outline: none;
+        }
+
+        button {
+            /* width: 100%; */
+            padding: 12px 20px;
+            border: none;
+            background-color: #4a90e2;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Result Styles */
+        #result-container {
+            margin-top: 20px;
+        }
+
+        #result-heading {
+            font-size: 1.5rem;
+            color: #4a90e2;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #result {
+            font-size: 1.2rem;
+            color: #4a90e2;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Conversion Info Styles */
+        #conversion-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+            max-width: 400px;
+            margin: 20px auto 0;
+        }
+
+        #conversion-info h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #conversion-info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #conversion-info li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        #conversion-info li:hover {
+            color: #4a90e2;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            main {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+
+            #converter,
+            #conversion-info {
+                flex: 1;
+                margin: 0 10px;
+                max-width: none;
+            }
+        }
+
+
+
+
+
+
+        /* Conversion Info Styles */
+        #conversion-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #conversion-info h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #conversion-info ul {
+            list-style-type: none;
+        }
+
+        #conversion-info li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        #conversion-info li:hover {
+            color: #4a90e2;
+            cursor: pointer;
+        }
+
+
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            main {
+                flex-direction: row;
+            }
+
+            #converter,
+            #conversion-info {
+                flex: 1;
+            }
+        }
+
+        /* area section */
+        .area-info-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #181852;
+            /* Updated background color */
+            border-radius: 10px;
+            color: #fff;
+            /* White text for all elements */
+        }
+
+        .area-main-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            /* White heading */
+        }
+
+        .area-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            /* White heading */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 50px;
+        }
+
+        .area-description,
+        .area-formulas,
+        .area-application {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .area-formula-list {
+            margin: 15px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+            color: #fff;
+            /* White text for list items */
+        }
+
+        .area-formula-list li {
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Gold color for list items */
+            font-size: 14px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: #09092e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+        }
+
+        .info-card:hover {
+            background-color: #126b7a;
+            transform: translateY(-5px);
+        }
+
+        .info-card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Accent color for card titles */
+        }
+
+        .info-card-description {
+            font-size: 14px;
+            color: #fff;
+            /* White text for card descriptions */
+        }
+
+        .area-title:hover {
+            color: #00d6fc;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- Converter -->
+    <header>
+        <h1>" Temperature Conversion Tool "</h1>
+    </header>
+    <main>
+        <section id="converter">
+            <h2>Convert Temperature Units</h2>
+
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="celsius">Celsius</option>
+            </select>
+
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+
+            <label for="inputValue">Value (<span id="fromUnitLabel">Fahrenheit</span>):</label>
+            <input type="text" id="inputValue" placeholder="Enter temperature value">
+
+            <button onclick="convert()">Convert</button>
+
+            <div id="result-container">
+                <div id="result-heading">Conversion Result:</div>
+                <div id="result"></div>
+            </div>
+        </section>
+        <aside id="conversion-info">
+            <h3> Temeratue Conversion Formulas</h3>
+            <ul>
+                <li>Celsius (°C) = 33.8 Fahrenheit (°F)</li>
+                <li>Fahrenheit (°F) = -17.2222 Celsius (°C)</li>
+                <li>Celsius (°C) = 274.15 Kelvin (K)</li>
+                <li>Kelvin (K) = -273.15 Celsius (°C)</li>
+                <li>Fahrenheit (°F) = 255.927 Kelvin (K)</li>
+                <li>Kelvin (K) = -459.67 Fahrenheit (°F)
+                </li>
+
+            </ul>
+        </aside>
+    </main>
+
+
+
+
+    <!-- AREA INFO  -->
+    <section class="area-info-container">
+        <!-- <h1 class="area-main-title">Area Information</h1> -->
+
+        <section class="area-definition">
+            <h2 class="area-title">Definition of Temperature</h2>
+            <p class="area-description">
+                Temperature is a measure of the average kinetic energy of particles in a substance, indicating how hot
+                or cold it is. It is commonly measured in degrees Celsius (°C), Fahrenheit (°F), or Kelvin (K).
+            </p>
+            <p class="area-formulas">
+                Common formulas for calculating Temperature include:
+            </p>
+            <ul class="area-formula-list">
+                <li><strong>Celsius to Fahrenheit:</strong> F = <span style="font-size: 0.75em;">9</span>/<span
+                        style="font-size: 0.75em;">5</span>C + 32</li>
+
+
+                <li><strong>Fahrenheit to Celsius:</strong> C = <span style="font-size: 0.75em;">5</span>/<span
+                        style="font-size: 0.75em;">9</span>(F - 32)</li>
+
+
+                <li><strong>Celsius to Kelvin:</strong> K = C + 273.15</li>
+
+                <li><strong>Kelvin to Celsius:</strong> C = K − 273.15</li>
+            </ul>
+            <p class="area-application">
+                Understanding area is essential for applications in fields such as land measurement, construction, and
+                design.
+            </p>
+        </section>
+
+        <section class="area-units">
+            <h2 class="area-title">Units of Temperature</h2>
+            <div class="card-container">
+                <div class="info-card">
+                    <h3 class="info-card-title">Celsius (°C):</h3>
+                    <p class="info-card-description">
+                        A scale used widely around the world, based on the freezing point of water (0°C) and the boiling
+                        point of water (100°C) at standard atmospheric pressure.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Fahrenheit (°F):</h3>
+                    <p class="info-card-description">
+                        Primarily used in the United States, where water freezes at 32°F and boils at 212°F at standard
+                        atmospheric pressure.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Kelvin (K):</h3>
+                    <p class="info-card-description">
+                        The SI unit for temperature is Kelvin (K), used in scientific contexts, starting at absolute
+                        zero (0 K), the point where all particle motion ceases. The Kelvin scale shares the same
+                        incremental value as Celsius but does not use the degree symbol. Absolute zero is equivalent to
+                        -273.15°C.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="info-card-title">Rankine (°R):</h3>
+                    <p class="info-card-description">
+                        The Rankine scale (°R) is an absolute temperature scale used in engineering, based on Fahrenheit
+                        increments. Absolute zero is 0°R, equivalent to -459.67°F.
+                    </p>
+                    <!-- </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Square Yard</h3>
+                    <p class="info-card-description">
+                        A square yard is a unit of area equal to 9 square feet, commonly used in the U.S. and U.K.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Square Inch</h3>
+                    <p class="info-card-description">
+                        A square inch is used in the U.S. and U.K. One square inch equals 6.4516 square centimeters.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Millimeter</h3>
+                    <p class="info-card-description">
+                        The square millimeter is used for very small areas. One square millimeter equals 0.001 square
+                        meters.
+                    </p>
+                </div>  -->
+
+                </div>
+        </section>
+    </section>
+
+
+    <!-- AREA INFO  -->
+
+    <!-- CARDS MAIN HEADING  -->
+    <div class="conversion-section">
+        <h2 id="Starters" class="conversion-heading">More Conversions</h2>
+        <!-- Content for Starters -->
+    </div>
+    <!-- CARDS MAIN  -->
+    <div class="ag-format-container">
+        <h2 class="services-heading"></h2> <!-- Added Services Heading -->
+
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="area.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Area Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="mass.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Mass Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="length.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Length Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="volume.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Volume Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="temperature.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Temperature Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="currency.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Currency Converter</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- CARDS MAIN END -->
+
+
+
+    <!-- FAQS  -->
+    <div class="faq-container">
+        <h2 class="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-1" aria-expanded="false">
+                    <span class="faq-accordion-title">How do I convert Celsius to Fahrenheit?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>To convert Celsius to Fahrenheit, use the formula:
+                        <strong>Fahrenheit = (Celsius × 9/5) + 32</strong>.<br>
+                        <strong>Example:</strong><br>
+                        25°C = (25 × 9/5) + 32 = 77°F.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-2" aria-expanded="false">
+                    <span class="faq-accordion-title">How do I convert Fahrenheit to Celsius?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>To convert Fahrenheit to Celsius, use the formula:
+                        <strong>Celsius = (Fahrenheit - 32) × 5/9</strong>.<br>
+                        <strong>Example:</strong><br>
+                        77°F = (77 - 32) × 5/9 = 25°C.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-3" aria-expanded="false">
+                    <span class="faq-accordion-title">How do I convert Kelvin to Celsius?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>To convert Kelvin to Celsius, use the formula:
+                        <strong>Celsius = Kelvin - 273.15</strong>.<br>
+                        <strong>Example:</strong><br>
+                        300K = 300 - 273.15 = 26.85°C.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-4" aria-expanded="false">
+                    <span class="faq-accordion-title">What is the freezing point of water in different temperature
+                        scales?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>The freezing point of water is:
+                        <strong>0°C</strong> (Celsius),
+                        <strong>32°F</strong> (Fahrenheit),
+                        <strong>273.15K</strong> (Kelvin).
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-5" aria-expanded="false">
+                    <span class="faq-accordion-title">At what temperature do Celsius and Fahrenheit equal each
+                        other?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>Celsius and Fahrenheit are the same at -40 degrees.<br>
+                        <strong>Formula:</strong><br>
+                        Set F = C in the formula F = (9/5 × C) + 32 and solve to find C = -40.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQS END  -->
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-column">
+                    <h4>Quick Metric</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Online Convertors</h4>
+                    <ul>
+                        <li><a href="area.html">Area Converter</li>
+                        <li><a href="mass.html">Mass Converter</a></li>
+                        <li><a href="length.html">Length Converter</a></li>
+                        <li><a href="temperature.html">Temperature Converter</a></li>
+                        <li><a href="volume.html">Volume Converter</a></li>
+                        <li><a href="currency.html">Currency Converter</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FOOTER END   -->
+
+
+
+
+</body>
+
+
+<script src="temperature.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to update the label dynamically based on selected "From" unit
+    function updateLabel() {
+        const fromUnit = document.getElementById("fromUnit").value;
+        const fromUnitLabel = document.getElementById("fromUnitLabel");
+
+        if (fromUnit === "fahrenheit") {
+            fromUnitLabel.textContent = "Fahrenheit";
+        } else if (fromUnit === "celsius") {
+            fromUnitLabel.textContent = "Celsius";
+        }
+    }
+
+    // Function to handle the conversion
+    function convert() {
+        const fromUnit = document.getElementById("fromUnit").value;
+        const toUnit = document.getElementById("toUnit").value;
+        const inputValue = parseFloat(document.getElementById("inputValue").value);
+        let result;
+
+        // Check if the input is a valid number
+        if (isNaN(inputValue)) {
+            alert("Please enter a valid number.");
+            return;
+        }
+
+        // Conversion logic
+        if (fromUnit === "fahrenheit" && toUnit === "celsius") {
+            result = ((inputValue - 32) * 5 / 9).toFixed(2) + " °C";
+        }
+        else if (fromUnit === "celsius" && toUnit === "fahrenheit") {
+            result = ((inputValue * 9 / 5) + 32).toFixed(2) + " °F";
+        }
+        // If user selects the same units
+        else {
+            alert("Please select different units for conversion.");
+            return;
+        }
+
+        // Display the result
+        document.getElementById("result").textContent = "Result: " + result;
+    }
+    // FAQS START 
+    const faqItems = document.querySelectorAll(".faq-accordion button");
+
+    function toggleFaqAccordion() {
+        const faqToggle = this.getAttribute('aria-expanded');
+
+        // Close all accordion items
+        faqItems.forEach(item => item.setAttribute('aria-expanded', 'false'));
+
+        // Toggle the current item
+        if (faqToggle === 'false') {
+            this.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    faqItems.forEach(item => item.addEventListener('click', toggleFaqAccordion));
+
+
+    // FAQS END 
+
+</script>
+
+</html>

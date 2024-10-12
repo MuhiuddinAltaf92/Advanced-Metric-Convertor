@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="shortcut icon" class="documentlogo" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="style.css">
+    <title>Mass Convertor</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Font Import for Cursive Text */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400&display=swap');
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #4a90e2;
+            font-size: 3rem;
+            text-shadow: 0 0 8px rgba(74, 144, 226, 0.7);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        header h1:hover {
+            color: #9b59b6;
+            text-shadow: 0 0 15px rgba(155, 89, 182, 0.9);
+        }
+
+        /* Main Layout */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        /* Converter Section Styles */
+        #converter {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #converter h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #4a90e2;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #4a90e2;
+            font-size: 1.2rem;
+        }
+
+        /* Conversion Info Styles */
+        #conversion-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #conversion-info h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #conversion-info ul {
+            list-style-type: none;
+        }
+
+        #conversion-info li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        #conversion-info li:hover {
+            color: #4a90e2;
+            cursor: pointer;
+        }
+
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            main {
+                flex-direction: row;
+            }
+
+            #converter,
+            #conversion-info {
+                flex: 1;
+            }
+        }
+          /* area section */
+        .area-info-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #181852; /* Updated background color */
+    border-radius: 10px;
+    color: #fff; /* White text for all elements */
+}
+
+.area-main-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff; /* White heading */
+}
+
+.area-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff; /* White heading */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+.area-description,
+.area-formulas,
+.area-application {
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.area-formula-list {
+    margin: 15px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+    color: #fff; /* White text for list items */
+}
+
+.area-formula-list li {
+    margin-bottom: 10px;
+    color: #00d9ff; /* Gold color for list items */
+    font-size: 14px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background-color: #09092e;
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+}
+
+.info-card:hover {
+    background-color: #126b7a;
+    transform: translateY(-5px);
+}
+
+.info-card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #00d9ff; /* Accent color for card titles */
+}
+
+.info-card-description {
+    font-size: 14px;
+    color: #fff; /* White text for card descriptions */
+}
+.area-title:hover{
+    color: #00d6fc;
+}
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- Mass Conversion -->
+    <header>
+        <h1>" Mass Conversion Tool "</h1>
+    </header>
+    <main>
+        <section id="converter">
+            <h2>Convert Mass Units</h2>
+
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="ounces">Ounces</option>
+                <option value="pounds">Pounds</option>
+                <option value="shortTons">Short Tons</option>
+            </select>
+
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="grams">Grams</option>
+                <option value="kilograms">Kilograms</option>
+                <option value="megagrams">Megagrams (Metric Tons)</option>
+            </select>
+
+            <label for="inputValue">Value (<span id="fromUnitLabel">Ounces</span>):</label>
+            <input type="text" id="inputValue" placeholder="Enter value e.g., 12345">
+
+            <button onclick="convert()">Convert</button>
+
+            <div id="result"></div>
+        </section>
+
+        <aside id="conversion-info">
+            <h3>Conversion Factors</h3>
+            <ul>
+                <li>1 Ounce = 28.3495 Grams</li>
+                <li>1 Pound = 0.453592 Kilograms</li>
+                <li>1 Short Ton = 0.907185 Megagrams (Metric Tons)</li>
+            </ul>
+        </aside>
+    </main>
+    <!-- Mass Conversion END -->
+
+    <!-- MASS INFO  -->
+ <section class="area-info-container">
+    <!-- <h1 class="area-main-title">Area Information</h1> -->
+
+    <section class="area-definition">
+        <h2 class="area-title">Definition of Mass</h2>
+        <p class="area-description">
+           
+Mass is the measure of the amount of matter in an object, typically expressed in units such as grams (g), kilograms (kg), or pounds (lb). It quantifies how much substance or material an object contains, regardless of its volume or the gravitational force acting on it.
+        </p>
+        <p class="area-formulas">
+            Common formulas for calculating mass include:
+        </p>
+        <ul class="area-formula-list">
+            <li><strong>Density Formula:</strong> Mass = Density × Volume</li>
+            <li><strong>Force Formula:</strong> Mass = Force ÷ Acceleration (Newton's Second Law)</li>
+            <li><strong>Weight Formula:</strong> Mass = Weight ÷ Gravitational Acceleration</li
+        </ul>
+        <p class="area-application">
+            Understanding area is essential for applications in fields such as land measurement, construction, and design.
+        </p>
+    </section>
+
+    <section class="area-units">
+        <h2 class="area-title">Units of Mass</h2>
+        <div class="card-container">
+            <div class="info-card">
+                <h3 class="info-card-title">Gram</h3>
+                <p class="info-card-description">
+                    A gram is the metric unit of mass, commonly used to measure small quantities of material.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Kilogram</h3>
+                <p class="info-card-description">
+                    The kilogram is the base unit of mass in the International System of Units (SI) and equals 1,000 grams.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Pound</h3>
+                <p class="info-card-description">
+                    A pound is a unit of mass used in the imperial system. It is equivalent to 0.453592 kilograms.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Ounce</h3>
+                <p class="info-card-description">
+                    An ounce is a smaller unit of mass in the imperial system, with 16 ounces equaling one pound.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Metric Ton</h3>
+                <p class="info-card-description">
+                    The metric ton is a unit of mass equal to 1,000 kilograms or approximately 2,204.62 pounds.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Milligram</h3>
+                <p class="info-card-description">
+                    A milligram is a metric unit of mass, equivalent to 0.001 grams, commonly used for small masses.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Microgram</h3>
+                <p class="info-card-description">
+                    A microgram is used to measure extremely small masses. One microgram equals 0.000001 grams.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Stone</h3>
+                <p class="info-card-description">
+                    The stone is a unit of mass used in the U.K. One stone is equivalent to 14 pounds or 6.35 kilograms.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+</section>
+
+
+<!-- MASS INFO  -->
+
+
+    <!-- CARDS MAIN HEADING  -->
+    <div class="conversion-section">
+        <h2 id="Starters" class="conversion-heading">More Conversions</h2>
+        <!-- Content for Starters -->
+    </div>
+    <!-- CARDS MAIN  -->
+    <div class="ag-format-container">
+        <h2 class="services-heading"></h2> <!-- Added Services Heading -->
+
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="area.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Area Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="mass.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Mass Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="length.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Length Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="volume.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Volume Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="temperature.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Temperature Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="currency.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Currency Converter</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- CARDS MAIN END -->
+<!-- FAQS  -->
+<div class="faq-container">
+    <h2 class="faq-heading">Faqs of Mass Conversion</h2>
+    <div class="faq-accordion">
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-1" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert between ounces and grams?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    To convert weight:<br>
+                    1 Ounce = 28.3495 Grams<br>
+                    <strong>Formula:</strong><br>
+                    Grams = Ounces × 28.3495<br>
+                    Ounces = Grams ÷ 28.3495
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-2" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert between pounds and kilograms?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    To convert weight:<br>
+                    1 Pound = 0.453592 Kilograms<br>
+                    <strong>Formula:</strong><br>
+                    Kilograms = Pounds × 0.453592<br>
+                    Pounds = Kilograms ÷ 0.453592
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-3" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert between short tons and megagrams (metric tons)?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    To convert mass:<br>
+                    1 Short Ton = 0.907185 Megagrams (Metric Tons)<br>
+                    <strong>Formula:</strong><br>
+                    Metric Tons = Short Tons × 0.907185<br>
+                    Short Tons = Metric Tons ÷ 0.907185
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-4" aria-expanded="false">
+                <span class="faq-accordion-title">What is the difference between ounces, pounds, and tons?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    <strong>Ounce:</strong> A smaller unit of mass, 1 ounce = 28.3495 grams.<br>
+                    <strong>Pound:</strong> Commonly used in the US, 1 pound = 16 ounces = 0.453592 kilograms.<br>
+                    <strong>Short Ton:</strong> Used in the US, equals 2,000 pounds (907.185 kilograms).<br>
+                    These units are part of the Imperial and US customary systems.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-5" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert between different mass units?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>
+                    <strong>Ounce to Gram:</strong> Multiply by 28.3495.<br>
+                    <strong>Pound to Kilogram:</strong> Multiply by 0.453592.<br>
+                    <strong>Short Ton to Megagram (Metric Ton):</strong> Multiply by 0.907185.<br>
+                    These conversion factors simplify conversions between common mass units.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQS END  -->
+   <!-- Footer -->
+   <footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h4>Quick Metric</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Online Convertors</h4>
+                <ul>
+                    <li><a href="area.html">Area Converter</li>
+                    <li><a href="mass.html">Mass Converter</a></li>
+                    <li><a href="length.html">Length Converter</a></li>
+                    <li><a href="temperature.html">Temperature Converter</a></li>
+                    <li><a href="volume.html">Volume Converter</a></li>
+                    <li><a href="currency.html">Currency Converter</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- FOOTER END   -->
+
+
+
+
+
+
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
+
+<script>
+
+   // Validation and conversion logic
+function convert() {
+    const inputValue = parseFloat(document.getElementById('inputValue').value);
+    const resultDiv = document.getElementById('result');
+
+    // Check if input value is a valid number and greater than 0
+    if (isNaN(inputValue) || inputValue <= 0) {
+        resultDiv.innerText = "Please enter a valid number.";
+        return;
+    }
+
+    const fromUnit = document.getElementById('fromUnit').value;
+    const toUnit = document.getElementById('toUnit').value;
+
+    // Conversion factors for mass
+    const conversionFactors = {
+        'ouncesToGrams': 28.3495,
+        'poundsToKilograms': 0.453592,
+        'shortTonsToMegagrams': 0.907185
+    };
+
+    let convertedValue;
+
+    // Perform conversion based on selected units
+    if (fromUnit === "ounces" && toUnit === "grams") {
+        convertedValue = inputValue * conversionFactors['ouncesToGrams'];
+    } else if (fromUnit === "pounds" && toUnit === "kilograms") {
+        convertedValue = inputValue * conversionFactors['poundsToKilograms'];
+    } else if (fromUnit === "shortTons" && toUnit === "megagrams") {
+        convertedValue = inputValue * conversionFactors['shortTonsToMegagrams'];
+    } else {
+        resultDiv.innerText = "Conversion not supported.";
+        return;
+    }
+
+    // Display the result
+    resultDiv.innerText = `${inputValue} ${fromUnit} is equal to ${convertedValue.toFixed(4)} ${toUnit}.`;
+
+    // Clear the input field after conversion
+    document.getElementById('inputValue').value = "";
+}
+
+// Numeric validation for input field
+document.getElementById('inputValue').addEventListener('input', function (event) {
+    const inputValue = event.target.value;
+
+    // Remove non-numeric characters
+    const numericValue = inputValue.replace(/[^0-9.]/g, '');
+
+    // Check if input has changed
+    if (inputValue !== numericValue) {
+        // Show prompt message
+        alert("Choose from numbers.");  // Prompt for non-numeric input
+        // Update the input field to contain only numeric characters
+        event.target.value = numericValue;
+    }
+});
+
+// Update the input label dynamically based on the selected "from" unit
+document.getElementById("fromUnit").addEventListener("change", function () {
+    const fromUnitLabel = document.getElementById("fromUnitLabel");
+    fromUnitLabel.innerText = this.options[this.selectedIndex].text;
+});
+
+    // FAQS START 
+    const faqItems = document.querySelectorAll(".faq-accordion button");
+
+    function toggleFaqAccordion() {
+        const faqToggle = this.getAttribute('aria-expanded');
+
+        // Close all accordion items
+        faqItems.forEach(item => item.setAttribute('aria-expanded', 'false'));
+
+        // Toggle the current item
+        if (faqToggle === 'false') {
+            this.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    faqItems.forEach(item => item.addEventListener('click', toggleFaqAccordion));
+
+
+    // FAQS END 
+
+
+</script>
+
+</html>

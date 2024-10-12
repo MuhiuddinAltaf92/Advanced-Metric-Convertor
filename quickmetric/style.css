@@ -1,0 +1,839 @@
+/* Import the necessary fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+/* Cursive font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+/* Professional font */
+body {
+  background-color: #61d8ff;
+  overflow-x: hidden;
+}
+/* Navbar Styles */
+.navbar {
+  background-color: #181852;
+  /* Purplish-blue background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Bottom shadow */
+  position: static
+}
+
+/* Ensure the logo fits well within the navbar */
+.navbar-logo {
+  height: 40px;
+  /* Adjust the height as needed */
+  width: auto;
+  /* Maintain the aspect ratio */
+}
+
+.navbar-logo:hover {
+  text-shadow: 0 0 10px rgba(230, 230, 230, 0.8);
+  /* Glow effect */
+  transform: scale(1.2);
+  /* Slightly enlarge text on hover */
+}
+
+/* Navbar Brand (Logo) */
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  /* Apply the professional font */
+  font-size: 2rem;
+  /* Increase font size for better visibility */
+  letter-spacing: 1px;
+  /* Adjust spacing between letters */
+  display: flex;
+  /* Align items horizontally */
+  align-items: center;
+  /* Center items vertically */
+  transition: transform 0.3s ease;
+  /* Smooth transform transition */
+  margin-right: 20px;
+  /* Adjust spacing from other navbar items if necessary */
+}
+
+/* Logo Parts */
+.logo-part {
+  display: inline-block;
+  padding: 0 5px;
+  /* Add space between words */
+  position: relative;
+  /* For glow effect positioning */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  /* Smooth color and shadow transitions */
+}
+
+/* Different colors for each part */
+.quick {
+  color: #4a90e2;
+  /* Blue color for 'Quick' */
+}
+
+.metric {
+  color: #9b59b6;
+  /* Purple color for 'Metric' */
+}
+
+/* Glow effect on hover */
+.navbar-brand:hover .logo-part {
+  text-shadow: 0 0 10px rgba(230, 230, 230, 0.8);
+  /* Glow effect */
+  transform: scale(1.1);
+  /* Slightly enlarge text on hover */
+}
+
+
+/* Responsive font size */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+    /* Adjust font size for smaller screens */
+  }
+  body{
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+    /* Further adjust font size for very small screens */
+  }
+}
+
+/* Navbar Items Alignment */
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  /* Center align navbar items */
+  width: 100%;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 15px;
+  /* Adjust spacing between nav items as needed */
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  /* Stylish font */
+  padding-bottom: 5px;
+  /* Add space for underline */
+  text-decoration: none;
+  /* Remove default underline */
+  transition: color 0.3s ease;
+  /* Smooth color transition */
+}
+
+/* Underline for active state (e.g., Home) */
+.navbar-nav .nav-link.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  /* Full width underline for active state */
+  height: 2px;
+  /* Thin underline */
+  background-color: #b3b3cc;
+  /* Underline color */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+  /* Smooth width transition */
+}
+
+/* Hover effect for all nav links except Home */
+.navbar-nav .nav-link:not(.active):hover::after {
+  content: '';
+  display: block;
+  width: 100%;
+  /* Full width underline on hover */
+  height: 2px;
+  /* Thin underline height */
+  background-color: #b3b3cc;
+  /* Underline color on hover */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 0.5s ease;
+  /* Smooth width transition */
+}
+
+/* Ensure no underline for dropdown link */
+.navbar-nav .dropdown-toggle::after {
+  content: none;
+  /* No underline for dropdown link */
+}
+
+/* Dropdown Menu Styles */
+.navbar-nav .dropdown:hover .dropdown-menu {
+  display: block;
+  /* Show dropdown menu on hover */
+  margin-top: 0;
+  /* Remove unwanted space */
+  background-color: #2d2d44;
+  /* Dropdown background color */
+}
+
+.dropdown-menu {
+  border: none;
+  /* Remove border */
+}
+
+.dropdown-item {
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  /* Stylish font */
+  transition: color 0.3s ease, background-color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+  /* Smooth transitions */
+}
+
+/* Dropdown item hover effect */
+.dropdown-item:hover {
+  background-color: #3a3a5c;
+  /* Darker purplish on hover */
+  color: #b3b3cc;
+  /* Light color on hover */
+  text-shadow: 0 0 5px #b3b3cc;
+  /* Glow effect on hover */
+  transform: translateX(5px);
+  /* Slight move effect on hover */
+}
+
+
+
+.custom-navbar {
+  background-color: #181852;
+  /* Dark purple-blue */
+}
+
+/* ICON SLIDER ---------------------------------- */
+
+.icon-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 80px;
+  margin-top: 1px;
+  background-color: #222244;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5), 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.icon-container {
+  display: flex;
+  gap: 30px;
+  position: absolute;
+  animation: slide 15s linear infinite;
+  padding-left: 100%;
+  background-color: #222244;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 20px;
+  background-color: #4a90e2;
+  overflow: hidden;
+  /* Ensure content doesn't spill out of the circle */
+  transition: transform 0.3s;
+  border: 1.5px solid #122f8b;
+  /* Change the color and width as needed */
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Scale the image to cover the container while maintaining aspect ratio */
+  border-radius: 50%;
+  /* Ensure the image is round */
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Define different colors for each icon */
+.icon[title="Area"] {
+  background-color: #ff8c00;
+  /* Orange */
+}
+
+.icon[title="Length"] {
+  background-color: #ffd700;
+  /* Yellow */
+}
+
+.icon[title="Volume"] {
+  background-color: #00bfff;
+  /* Blue */
+}
+
+.icon[title="Mass"] {
+  background-color: #adff2f;
+  /* Green */
+}
+
+.icon[title="Temperature"] {
+  background-color: #ff4500;
+  /* Red */
+}
+
+.icon[title="Time"] {
+  background-color: #4b0082;
+  /* Indigo */
+}
+
+.icon[title="Speed"] {
+  background-color: #ff69b4;
+  /* Pink */
+}
+
+.icon[title="Energy"] {
+  background-color: #8a2be2;
+  /* BlueViolet */
+}
+
+/* Sliding animation */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Media queries to make it responsive */
+@media (max-width: 768px) {
+  .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .icon-container {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .icon {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .icon-container {
+    gap: 15px;
+  }
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #6f42c1;
+  /* Purple color */
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: #6f42c1;
+  /* Purple color */
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #5a32a8;
+  /* Darker purple */
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #007bff;
+  /* Blue color */
+}
+
+.btn-secondary:hover {
+  background-color: #0056b3;
+  /* Darker blue */
+}
+
+.text-center {
+  margin-bottom: 20px;
+}
+
+/* ICON SLIDER END ---------------------------------- */
+
+
+/* FAQS START ---------------------------------- */
+
+.faq-container {
+  margin: 5px auto;
+  padding: 3rem;
+  max-width: 50rem;
+  background-color: #0b1e35;
+  /* Dark bluish background */
+  border-radius: 20px;
+}
+
+.faq-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #50a0d1;
+  /* Lighter bluish heading */
+  font-weight: bold;
+  /* Bold for emphasis */
+}
+
+.faq-accordion {
+  .faq-accordion-item {
+    border-bottom: 1px solid #1f2f44;
+    /* Darker border */
+
+    button[aria-expanded='true'] {
+      border-bottom: 1px solid #50a0d1;
+      /* Light blue border when expanded */
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 1em 0;
+    text-align: left;
+    color: #dce4ed;
+    /* Lighter text color */
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 200ms ease-in-out, color 200ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #1f2f44;
+      /* Darker background on hover */
+      color: #50a0d1;
+      /* Lighter blue text on hover */
+    }
+
+    .faq-accordion-title {
+      padding-right: 1.5em;
+    }
+
+    .faq-icon {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      border: 1px solid #50a0d1;
+      /* Light blue border */
+      border-radius: 50%;
+      transition: border-color 200ms ease-in-out;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 2px;
+        background: #50a0d1;
+        /* Light blue horizontal line */
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        width: 10px;
+        height: 2px;
+        background: #50a0d1;
+        /* Light blue vertical line */
+      }
+    }
+  }
+
+  button[aria-expanded='true'] {
+    color: #50a0d1;
+    /* Light blue text when expanded */
+
+    .faq-icon::after {
+      width: 0;
+      /* Collapse the plus icon */
+    }
+
+    +.faq-accordion-content {
+      opacity: 1;
+      max-height: 8em;
+      transition: max-height 200ms ease-in, opacity 200ms ease-in;
+    }
+  }
+
+  .faq-accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms ease-in, max-height 200ms ease-in;
+
+    p {
+      margin: 1.5rem 0;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #dce4ed;
+      /* Light grayish-blue text */
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .faq-heading {
+    font-size: 2rem;
+  }
+
+  .faq-container {
+    padding: 2rem;
+    width: 100%;
+  }
+}
+
+/* Hover effect: Expand text area */
+.faq-accordion button:hover,
+.faq-accordion button:focus {
+  cursor: pointer;
+  padding-left: 1.5em;
+  /* Expand a little on hover */
+  transition: padding 0.3s ease;
+  /* Smooth transition */
+}
+
+/* For the expanded content: Adding scroll functionality */
+.faq-accordion button[aria-expanded="true"]+.faq-accordion-content {
+  max-height: 200px;
+  /* Limit the height */
+  overflow-y: auto;
+  /* Allow vertical scrolling if content is long */
+  padding: 1em;
+  /* Padding for better readability */
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* Default hidden state */
+.faq-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+/* FAQS END ---------------------------------- */
+.ag-format-container {
+  width: 100%;
+  /* Adjusted to full width for responsiveness */
+  max-width: 1142px;
+  /* Maintain a max-width for larger screens */
+  margin: 10px auto;
+  
+
+
+}
+
+.ag-courses_box {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px 0;
+
+
+}
+
+.ag-courses_item {
+  flex-basis: calc(33.33333% - 30px);
+  margin: 0 15px 30px;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.ag-courses-item_link {
+  display: block;
+  padding: 30px 20px;
+  background-color: #101330;
+  /* Default background color */
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.5s ease;
+  /* Smooth background transition */
+  text-decoration: none;
+}
+
+.ag-courses-item_link:hover {
+  background-color: #3ecd5e;
+  /* Change this to your desired hover color */
+}
+
+.ag-courses-item_title {
+  min-height: 87px;
+  margin: 0 0 25px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 30px;
+  color: #FFF;
+  z-index: 2;
+  position: relative;
+
+}
+
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: transparent;
+  /* Make this transparent */
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  border-radius: 50%;
+  transition: all .5s ease;
+}
+
+.ag-courses_item:hover .ag-courses-item_bg {
+  background-color: #621e77;
+  /* Same color as the hover effect for the card */
+  height: 200%;
+  /* Scale the background on hover */
+  width: 200%;
+  /* Scale the background on hover */
+}
+
+.ag-courses_box:nth-child(n) .ag-courses-item_bg {
+  background-color: #8a1831;
+}
+
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+  background-color: #3ecd5e;
+}
+
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+  background-color: #e44002;
+}
+
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+  background-color: #952aff;
+}
+
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+  background-color: #4c49ea;
+}
+
+
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    flex-basis: calc(50% - 30px);
+    /* Adjust for medium screens */
+  }
+
+  .ag-courses-item_title {
+    font-size: 24px;
+    /* Adjust title font size */
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+    /* Use 96% for slight margin */
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    flex-basis: 100%;
+    /* Stack items on small screens */
+  }
+
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
+    font-size: 24px;
+    /* Adjust title font size */
+  }
+
+  .ag-courses-item_link {
+    padding: 22px 40px;
+    /* Adjust padding for smaller screens */
+  }
+}
+
+/* Menu Section Heading */
+.conversion-heading {
+  font-family: 'Playfair Display', serif;
+  color: #24136e;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: -30px;
+  border-left: 5px solid #191369;
+  padding-left: 15px;
+}
+.conversion-heading:hover{
+  color:#1162ad;
+  text-shadow: 0 4px 8px rgba(7, 21, 68, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .conversion-heading {
+      font-size: 28px;
+      margin-left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .conversion-heading {
+      font-size: 24px;
+      margin-left: 10px;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+}
+
+.footer-section {
+    background-color: #02023d;
+    padding: 70px 0;
+}
+
+.footer-column {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-column h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #0c3f9e;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer-column ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+.footer-column .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.footer-column .social-links a:hover {
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .footer-column {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 574px) {
+    .footer-column {
+        width: 100%;
+    }
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+body {
+    
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove default margin */
+}
+
+
+
+.currency-ct {
+    text-align: center; /* Center text */
+}
+ 
+ 
+ /* Converter Section Styles */
+#converter {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#converter h2 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+form {
+    margin: 40px 0 20px 0;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus, input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+    outline: none;
+}
+
+button {
+    /* width: 100%; */
+    padding: 12px 20px;
+    border: none;
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #357abd;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Result Styles */
+#result-container {
+    margin-top: 20px;
+}
+
+#result-heading {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#result {
+    font-size: 1.2rem;
+    color: #4a90e2;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Conversion Info Styles */
+#conversion-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    max-width: 400px;
+    margin: 20px auto 0;
+}
+
+#conversion-info h3 {
+    color: #9b59b6;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+#conversion-info ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#conversion-info li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+#conversion-info li:hover {
+    color: #4a90e2;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+    main {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    #converter, #conversion-info {
+        flex: 1;
+        margin: 0 10px;
+        max-width: none;
+    }
+}
+
+
+/* Conversion Info Styles */
+#conversion-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+#conversion-info h3 {
+    color: #9b59b6;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+#conversion-info ul {
+    list-style-type: none;
+}
+
+#conversion-info li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+#conversion-info li:hover {
+    color: #4a90e2;
+    cursor: pointer;
+}
+
+/* Footer Styles */
+
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+
+    #converter, #conversion-info {
+        flex: 1;
+    }
+}
+
+/* area section */
+.area-info-container {
+max-width: 1200px;
+margin: 50px auto;
+padding: 20px;
+background-color: #181852; /* Updated background color */
+border-radius: 10px;
+color: #fff; /* White text for all elements */
+}
+
+.area-main-title {
+text-align: center;
+margin-bottom: 30px;
+color: #fff; /* White heading */
+}
+
+.area-title {
+text-align: center;
+margin-bottom: 20px;
+color: #fff; /* White heading */
+font-family: 'Times New Roman', Times, serif;
+font-size: 50px;
+}
+
+.area-description,
+.area-formulas,
+.area-application {
+margin-bottom: 20px;
+font-size: 16px;
+text-align: justify;
+}
+
+.area-formula-list {
+margin: 15px 0;
+padding-left: 20px;
+list-style-type: disc;
+color: #fff; /* White text for list items */
+}
+
+.area-formula-list li {
+margin-bottom: 10px;
+color: #00d9ff; /* Gold color for list items */
+font-size: 14px;
+}
+
+.card-container {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.info-card {
+background-color: #09092e;
+padding: 1.5rem;
+border-radius: 10px;
+transition: background-color 0.3s, transform 0.3s;
+box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+}
+
+.info-card:hover {
+background-color: #126b7a;
+transform: translateY(-5px);
+}
+
+.info-card-title {
+font-size: 18px;
+margin-bottom: 10px;
+color: #00d9ff; /* Accent color for card titles */
+}
+
+.info-card-description {
+font-size: 14px;
+color: #fff; /* White text for card descriptions */
+}
+.area-title:hover{
+color: #00d6fc;
+}
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #4a90e2;
+    font-size: 3rem;
+    text-shadow: 0 0 8px rgba(74, 144, 226, 0.7);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+header h1:hover {
+    color: #9b59b6;
+    text-shadow: 0 0 15px rgba(155, 89, 182, 0.9);
+}
+    </style>
+
+
+</head>
+<body>
+    <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+   
+
+
+    <!-- Currency Conversion Container -->
+    <header>
+        <h1 class="currency-ct">Currency Conversion Tool</h1>
+    </header>
+
+    <main>
+        <section id="converter">
+            <h2>Convert Currency</h2>
+            <form>
+                <div class="amount">
+                    <p>Enter Amount</p>
+                    <input type="number" value="1" id="amount">
+                </div>
+                <div class="drop-list">
+                    <div class="select-box">
+                        <select id="from-currency"></select>
+                    </div>
+                    <!-- <div class="icon"><i class="fas fa-exchange-alt" onclick="swapCurrencies()"></i></div> -->
+                    <div class="select-box">
+                        <select id="to-currency"></select>
+                    </div>
+                </div>
+                <div class="exchange-rate" id="exchange-rate">1 USD = 118.16 NPR</div>
+                <button type="button" onclick="getExchangeRate()">Get Exchange Rate</button>
+            </form>
+            </section>
+        <aside id="conversion-info">
+            <h3>Conversion Factors</h3>
+            <ul>
+                <p><strong>Conversion factor:</strong> The rate to exchange one currency for another.</p>
+                <p><strong>Market-driven:</strong> Changes frequently based on market conditions, economic events, and
+                    supply-demand.</p>
+                <p><strong>Direct conversion:</strong> Example: If 1 USD = 0.85 EUR, USD to EUR conversion factor is
+                    0.85.</p>
+                <p><strong>Inverse conversion:</strong> To convert back, use the inverse rate. In the example, EUR to
+                    USD = 1 ÷ 0.85 = 1.18.</p>
+                <p><strong>Application:</strong> Multiply the amount by the conversion factor to convert between
+                    currencies.</p>
+            </ul>
+        </aside>
+    </main>
+    </div>
+
+
+
+    <!-- AREA INFO  -->
+    <section class="area-info-container">
+        <!-- <h1 class="area-main-title">Area Information</h1> -->
+
+        <section class="area-definition">
+            <h2 class="area-title">Definition of Currency</h2>
+            <p class="area-description">
+                Currency is a standardized system of money used as a medium of exchange for goods and services in an
+                economy. It is issued and regulated by a government or central authority and holds a specific value
+                recognized within and outside a country. Currencies come in various forms, such as coins, banknotes, or
+                digital currency. Common examples include the US Dollar (USD), Euro (EUR), and Japanese Yen (JPY).
+            </p>
+            <p class="area-formulas">
+                Common formulas for Currency Conversion:
+            </p>
+            <ul class="area-formula-list">
+                <li><strong>Direct Conversion:</strong> Converted Amount = Amount × Conversion Rate
+                <li><strong>Inverse Conversion:</strong> Conversion Rate (Inverse) = 1 ÷ Direct Conversion Rate
+                </li>
+
+                <li><strong>Cross Rate Conversion (for two currencies through a third currency):</strong> Cross Rate = (Currency A to Currency C) ÷ (Currency B to Currency C)  </li>
+
+                <li><strong>Percentage Change in Exchange Rate:</strong> Percentage Change = ((New Rate - Old Rate) ÷ Old Rate) × 100</li>
+            </ul>
+            <p class="area-application">
+                Understanding currency is essential for global trade, financial markets, and economic stability. It enables international transactions and exchange rate management between economies.
+
+            </p>
+        </section>
+
+        <section class="area-units">
+            <h2 class="area-title">Foreign Currencies</h2>
+            <div class="card-container">
+                <div class="info-card">
+                    <h3 class="info-card-title">Dollar (USD): </h3>
+                    <p class="info-card-description">
+                        The official currency of the United States, widely used as a global reserve currency. It is subdivided into 100 cents and is symbolized by the dollar sign ($).
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Euro (EUR):</h3>
+                    <p class="info-card-description">
+                        The common currency used by 19 of the 27 European Union member countries, collectively known as the Eurozone. It is the second most traded currency in the world and is also subdivided into 100 cents.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Pound Sterling (GBP): </h3>
+                    <p class="info-card-description">
+                        The official currency of the United Kingdom and its territories, recognized by the symbol "£". It is one of the oldest currencies still in use and is divided into 100 pence.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Yen (JPY): </h3>
+                    <p class="info-card-description">
+                        The official currency of Japan, represented by the symbol "¥". The yen is one of the most traded currencies globally and is not subdivided into smaller units.
+
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Rupee (INR): </h3>
+                    <p class="info-card-description">
+                        The official currency of India, denoted by the symbol "₹". It is subdivided into 100 paise and is used as a medium of exchange for goods and services in the Indian economy.
+
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Won (KRW):</h3>
+                    <p class="info-card-description">
+                        The official currency of South Korea, represented by the symbol "₩". The won is subdivided into 100 jeon and is used in domestic and international trade.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Franc (CHF):  </h3>
+                    <p class="info-card-description">
+                        The official currency of Switzerland and Liechtenstein, recognized by the symbol "Fr" or "SFr". The franc is subdivided into 100 rappen (or centimes in French) and is known for its stability.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Peso (MXN): </h3>
+                    <p class="info-card-description">
+                        The official currency of Mexico, symbolized by "$" or "MX$" to distinguish it from other dollar-denominated currencies. It is subdivided into 100 centavos and is used in various economic transactions within the country.
+
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <!-- AREA INFO  -->
+
+
+
+
+
+
+
+
+
+<!-- FOOTER START   -->
+    <!-- Remove the container to extend the Footer to full width. -->
+    <div class="my-5">
+
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <div class="footer-column">
+                        <h4>Quick Metric</h4>
+                        <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                    </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Online Convertors</h4>
+                        <ul>
+                            <li><a href="area.html">Area Converter</li>
+                            <li><a href="mass.html">Mass Converter</a></li>
+                            <li><a href="length.html">Length Converter</a></li>
+                            <li><a href="temperature.html">Temperature Converter</a></li>
+                            <li><a href="volume.html">Volume Converter</a></li>
+                            <li><a href="currency.html">Currency Converter</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- FOOTER END   -->
+
+
+
+
+        <script>
+            const country_code = {
+                "USD": "US", "EUR": "EU", "GBP": "GB", "INR": "IN", "AUD": "AU", "CAD": "CA", "SGD": "SG",
+                "CHF": "CH", "MYR": "MY", "JPY": "JP", "CNY": "CN", "NZD": "NZ", "THB": "TH", "ZAR": "ZA",
+                "PHP": "PH", "KRW": "KR", "NGN": "NG", "EGP": "EG", "BRL": "BR", "PKR": "PK", "NPR": "NP"
+            };
+            
+            const fromCurrency = document.getElementById("from-currency");
+            const toCurrency = document.getElementById("to-currency");
+            const amount = document.getElementById("amount");
+            const exchangeRateTxt = document.getElementById("exchange-rate");
+    
+            document.addEventListener("DOMContentLoaded", function () {
+                for (const code in country_code) {
+                    const optionFrom = document.createElement("option");
+                    optionFrom.value = code;
+                    optionFrom.textContent = code;
+                    fromCurrency.appendChild(optionFrom);
+    
+                    const optionTo = document.createElement("option");
+                    optionTo.value = code;
+                    optionTo.textContent = code;
+                    toCurrency.appendChild(optionTo);
+                }
+                fromCurrency.value = "USD";
+                toCurrency.value = "NPR";
+            });
+    
+            function swapCurrencies() {
+                const temp = fromCurrency.value;
+                fromCurrency.value = toCurrency.value;
+                toCurrency.value = temp;
+                getExchangeRate();
+            }
+    
+            function getExchangeRate() {
+                const amountVal = amount.value;
+                if (amountVal === "" || amountVal === "0") {
+                    amount.value = "1";
+                }
+                exchangeRateTxt.textContent = "Getting exchange rate...";
+    
+                const url = `https://open.er-api.com/v6/latest/${fromCurrency.value}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(result => {
+                        const exchangeRate = result.rates[toCurrency.value];
+                        const totalExchangeRate = (amount.value * exchangeRate).toFixed(2);
+                        exchangeRateTxt.textContent = `${amount.value} ${fromCurrency.value} = ${totalExchangeRate} ${toCurrency.value}`;
+                    })
+                    .catch(() => {
+                        exchangeRateTxt.textContent = "Something went wrong, please try again.";
+                    });
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+
+        body {
+            background-color: white;
+            color: black;
+            overflow-x: hidden;
+        }
+
+        .overlay-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-left: 0px;
+        }
+
+        .overlay-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.638);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .overlay h1 {
+            margin: 0;
+            font-size: 3em;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .overlay p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            justify-content: left;
+        }
+
+        .intro-container {
+            border: 2px;
+            background-color: #181852;
+            color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 2px solid black;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 5px;
+            margin: 15px;
+            margin-top: 20px;
+        }
+
+        .intro h1 {
+            margin-top: 10px;
+            border: 2px;
+            /* background-color: #0b0b3a; */
+            padding: 5px;
+        }
+
+        .container {
+            margin-top: 30px;
+            /* margin-left: 15%; */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container h1 {
+            border: 2px;
+            background-color: #181852;
+            color: white;
+            padding: 5px;
+            margin-top: 20px;
+            margin-left: 0;
+        }
+
+        .container b,
+        li {
+            color: black;
+            margin-left: 0;
+        }
+
+        .container h3 {
+            color: black;
+            margin-left: 0;
+        }
+
+        .cards {
+            border: 2px;
+            background-color: #181852;
+            border-radius: 5px;
+            padding-bottom: 10px;
+        }
+
+        .cards h1 {
+            /* background-color: #0b0b3a; */
+            color: #f8f9fa;
+            margin-top: 50px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card {
+            margin-top: 15px;
+            margin-left: 15%;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+      <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+    <div class="overlay-container">
+        <img src="./images/calculator2.jpg" alt="">
+        <div class="overlay">
+            <h1>Resources</h1>
+            <p><i><b>International & Historical Compilation of Metric System</b></i></p>
+        </div>
+    </div>
+
+    <!-- Introduction Starts -->
+    <div class="intro-container">
+        <div class="intro">
+            <h1 id="main-heading">What Exactly is Metric Conversion?</h1>
+            <p>Metric conversion is the process of changing measurements from one unit to another within the metric
+                system, or between the metric system and other systems like the imperial system. The metric system is
+                based on powers of 10, making it easy to convert units by shifting the decimal point. Common metric
+                units include meters for length, grams for mass, and liters for volume.</p>
+            <br>
+            <p><i>The simplicity of metric conversion comes from its standardized use of prefixes such as kilo-, centi-,
+                    and milli-, which represent specific powers of 10. For example, converting from kilometers to meters
+                    involves multiplying by 1,000 because a kilometer is 1,000 meters. This consistency makes the metric
+                    system widely used in science, medicine, and most countries around the world. When converting to or
+                    from non-metric systems, like inches to centimeters, conversion factors or formulas are applied to
+                    accurately switch between units.</i></p>
+        </div>
+    </div>
+    <!-- Introduction Ends -->
+
+    <div class="container">
+        <!-- SI System Start -->
+        <h1 id="para1">International System of Units (SI)</h1>
+        <p>The International System of Units (SI) is the standard system of measurement used worldwide in
+            science,
+            industry, and everyday life. Established in 1960, it is based on seven fundamental units: meter
+            (length), kilogram (mass), second (time), ampere (electric current), kelvin (temperature), mole
+            (amount
+            of substance), and candela (luminous intensity). The SI system aims to provide a consistent and
+            universal framework for measurements, facilitating clear communication and comparison across various
+            disciplines and countries.</p>
+        <!-- SI System End -->
+
+        <!-- Metric Start -->
+        <h1>Metric System</h1>
+        <p>The metric system broadly includes several systems, each with different historical origins and
+            applications. Here's a brief overview of key differences:
+            <br>
+            <br>
+            <b>1.Metric System:</b> This is a decimal-based system introduced in the late 18th century, using
+            units
+            like meters, grams, and liters. It's straightforward, with units scaling by powers of ten (e.g., 1
+            meter
+            = 1,000 millimeters).
+            <br>
+            <br>
+            <b>2.CGS System:</b> The centimeter-gram-second (CGS) system is a variant of the metric system that
+            uses
+            centimeters, grams, and seconds as base units. It is less common in modern applications but was
+            historically used in scientific contexts.
+            <br>
+            <br>
+            <b>3.MKS System:</b> The meter-kilogram-second (MKS) system is another metric variant that uses
+            meters,
+            kilograms, and seconds. It was a precursor to the SI system and is still used in some scientific
+            contexts.
+            <br>
+            <br>
+            <b>4.SI System:</b> The International System of Units (SI) is the modern, globally accepted
+            extension of
+            the metric system. It refines and expands upon the MKS system with additional units and definitions,
+            ensuring consistency across different fields of science and industry.
+            <br>
+            <br>
+            Each system serves different purposes, but the SI system is the most universally adopted for
+            scientific
+            and international use today.
+        </p>
+        <!-- Metric End -->
+
+        <!-- Metric System Start -->
+        <h1>Understanding The Meter: A Historical And Modern Perspective</h1>
+        <p>The meter, a fundamental unit of measurement in the metric system, has undergone significant
+            evolution
+            since its inception. Both its historical development and its current definition illustrate the
+            ongoing
+            quest for precision and standardization in measurement.
+            <br>
+            <b>
+                <li>Historical Definition</li>
+            </b>
+            <br>
+            The concept of the meter was introduced during the French Revolution in 1791. The original
+            definition
+            was based on a natural standard: it was conceived as one ten-millionth of the distance from the
+            equator
+            to the North Pole, measured along the meridian passing through Paris. This definition aimed to
+            create a
+            universal and decimal-based measurement system, aligning with the Enlightenment ideals of
+            rationality
+            and standardization.
+            <br>
+            To implement this definition, French scientists Jean-Baptiste Delambre and Pierre Méchain undertook
+            an
+            extensive survey of the meridian arc. The resulting meter was embodied in a physical artifact: a
+            platinum-iridium bar known as the "Meter Bar," which was kept at the International Bureau of Weights
+            and
+            Measures (BIPM) in Sèvres, France.
+            <br>
+            <br>
+            <b>Conclusion</b>
+            <br>
+            From its origins as a fraction of the Earth's meridian to its modern definition based on the speed
+            of
+            light, the meter exemplifies the evolution of measurement standards. Each shift reflects
+            advancements in
+            scientific understanding and technological capabilities, highlighting humanity's ongoing pursuit of
+            precision and universality in measurement.
+        </p>
+        <!-- Metric System Ends -->
+
+        <!-- U.S Units start -->
+        <h1 id="para4">Traditional U.S Units</h1>
+        <p>In the United States, various measurement systems are used, reflecting a blend of historical
+            tradition
+            and practical application. Here's an overview of the key measurement systems:
+            <br>
+            <br>
+        <ol>
+            <li><b>Imperial System (U.S. Customary System)</b></li>
+            The Imperial System, also known as the U.S. Customary System, is predominantly used in everyday
+            life,
+            business, and many sectors in the United States. It is based on units that have historical roots in
+            British measurement systems. Here are some key components:
+            <br>
+            <br>
+            <b>
+                <ul>
+                    <li>Length:</li>
+            </b>Inches, feet, yards, and miles. For example, there are 12 inches in a foot, 3 feet in a yard,
+            and
+            1,760 yards in a mile.
+            <br>
+            <b>
+                <li>Weight:</li>
+            </b> Ounces, pounds, and tons. There are 16 ounces in a pound and 2,000 pounds in a ton.
+            <br>
+            <b>
+                <li>Volume:</li>
+            </b>Fluid ounces, cups, pints, quarts, and gallons. There are 8 fluid ounces in a cup, 2 cups in a
+            pint,
+            2 pints in a quart, and 4 quarts in a gallon.</ul>
+            <br>
+            <b>Conclusion</b>
+            <br>
+            In summary, the U.S. employs a dual measurement system: the Imperial System for everyday use and the
+            Metric
+            System for scientific and technical applications. This duality reflects the country's historical
+            legacy
+            while adapting to global standards and practices.
+            </p>
+            <!-- </div> -->
+    </div>
+    <!-- U.S Units End -->
+
+    <!-- Cards Start -->
+    <div class="cards">
+        <h1>Metric System Through Images</h1>
+        <div class="row mx-0 px-0">
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/metric.jpg" class="card-img-top" alt="..." height="250px" width="100%">
+                    <div class="card-body">
+                        <p class="card-text"><b>"The Metric System: A Universal Language of Measurement"</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/metricsystem.jpeg" class="card-img-top" alt="..." height="250px" width="100%">
+                    <div class="card-body">
+                        <p class="card-text"><b>"The Importance of the Metric System in Science"</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/si.jpg" class="card-img-top" alt="..." height="250px" width="100%">
+                    <div class="card-body">
+                        <p class="card-text"><b>"The Benefits of Metrication in Business and Global Trade"</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="./images/siunits.jpg" class="card-img-top" alt="..." height="250px" width="100%">
+                    <div class="card-body">
+                        <p class="card-text"><b>"The Benefits of Metrication in Business and Global Trade"</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cards End -->
+
+   
+     <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h4>Quick Metric</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Online Convertors</h4>
+                <ul>
+                    <li><a href="area.html">Area Converter</li>
+                    <li><a href="mass.html">Mass Converter</a></li>
+                    <li><a href="length.html">Length Converter</a></li>
+                    <li><a href="temperature.html">Temperature Converter</a></li>
+                    <li><a href="volume.html">Volume Converter</a></li>
+                    <li><a href="currency.html">Currency Converter</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- FOOTER END   -->
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</html>

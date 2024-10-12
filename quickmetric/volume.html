@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter</title>
+
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+
+    <style>
+        /* converter-css Start */
+
+
+        body {
+
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            height: 100vh;
+            /* Full height of the viewport */
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .volume-ct {
+            text-align: center;
+            /* Center text */
+        }
+
+
+
+
+        /* Converter Section Styles */
+        #converter {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #converter h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #4a90e2;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Result Styles */
+        #result-container {
+            margin-top: 20px;
+        }
+
+        #result-heading {
+            font-size: 1.5rem;
+            color: #4a90e2;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #result {
+            font-size: 1.2rem;
+            color: #4a90e2;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Conversion Info Styles */
+        #conversion-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+            max-width: 400px;
+            margin: 20px auto 0;
+        }
+
+        #conversion-info h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #conversion-info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #conversion-info li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        #conversion-info li:hover {
+            color: #4a90e2;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            main {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+
+            #converter,
+            #conversion-info {
+                flex: 1;
+                margin: 0 10px;
+                max-width: none;
+            }
+        }
+
+
+
+
+        /* Conversion Info Styles */
+        #conversion-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #conversion-info h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #conversion-info ul {
+            list-style-type: none;
+        }
+
+        #conversion-info li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        #conversion-info li:hover {
+            color: #4a90e2;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+      
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            main {
+                flex-direction: row;
+            }
+
+            #converter,
+            #conversion-info {
+                flex: 1;
+            }
+        }
+
+        /* area section */
+        .area-info-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #181852;
+            /* Updated background color */
+            border-radius: 10px;
+            color: #fff;
+            /* White text for all elements */
+        }
+
+        .area-main-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            /* White heading */
+        }
+
+        .area-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            /* White heading */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 50px;
+        }
+
+        .area-description,
+        .area-formulas,
+        .area-application {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .area-formula-list {
+            margin: 15px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+            color: #fff;
+            /* White text for list items */
+        }
+
+        .area-formula-list li {
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Gold color for list items */
+            font-size: 14px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: #09092e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+        }
+
+        .info-card:hover {
+            background-color: #126b7a;
+            transform: translateY(-5px);
+        }
+
+        .info-card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Accent color for card titles */
+        }
+
+        .info-card-description {
+            font-size: 14px;
+            color: #fff;
+            /* White text for card descriptions */
+        }
+
+        .area-title:hover {
+            color: #00d6fc;
+        }
+
+        /* converter-css End */
+        header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+        header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #4a90e2;
+    font-size: 3rem;
+    text-shadow: 0 0 8px rgba(74, 144, 226, 0.7);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+header h1:hover {
+    color: #9b59b6;
+    text-shadow: 0 0 15px rgba(155, 89, 182, 0.9);
+}
+
+
+
+      
+
+        /* Footer-css End */
+    </style>
+
+
+
+</head>
+
+<body>
+     <!-- NAVBAR START -->
+     <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- converter-html -->
+    <header>
+        <h1 class="volume-ct">Volume Conversion Tool</h1>
+    </header>
+
+    <main>
+        <section id="converter">
+            <h2>Convert Volume Units</h2>
+
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="fl-oz">Fluid Ounces</option>
+                <option value="gal">Gallons</option>
+                <option value="cu-ft">Cubic Feet</option>
+                <option value="cu-yd">Cubic Yards</option>
+            </select>
+
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="ml">Milliliters</option>
+                <option value="l">Liters</option>
+                <option value="cu-m">Cubic Meters</option>
+                <option value="cu-ft">Cubic Feet</option>
+            </select>
+
+            <label for="inputValue">Value (<span id="fromUnitLabel">Fluid Ounces</span>):</label>
+            <input type="text" id="inputValue" placeholder="Enter value e.g. 1.5">
+
+            <button onclick="convert()">Convert</button>
+
+            <div id="result-container">
+                <div id="result-heading">Conversion Result:</div>
+                <div id="result"></div>
+            </div>
+        </section>
+
+
+        <aside id="conversion-info">
+            <h3>Conversion Factors</h3>
+            <ul>
+                <li> Fluid Ounce = 29.5735 Milliliters</li>
+                <li> 1 Gallon = 3.78541 Liters</li>
+                <li>1 Cubic Foot = 0.0283168 Cubic Meters</li>
+                <li>1 Cubic Yard = 0.764555 Cubic Meters</li>
+
+            </ul>
+        </aside>
+    </main>
+    <!-- converter  -->
+
+
+
+    <!-- AREA INFO  -->
+    <section class="area-info-container">
+        <!-- <h1 class="area-main-title">Area Information</h1> -->
+
+        <section class="area-definition">
+            <h2 class="area-title">Definition of Volume</h2>
+            <p class="area-description">
+                "A volume unit is a standard measure used to quantify the space occupied by a substance or object. Each
+                volume unit corresponds to a specific physical quantity and is used in various systems of measurement."
+            </p>
+            <p class="area-formulas">
+                Common formulas for calculating area include:
+            </p>
+            <ul class="area-formula-list">
+                <li><strong>Cube:</strong> V = a<sup>3</sup></li>
+                <li><strong>Rectangular Prism (Box):</strong> V = l &times; w &times; h</li>
+                <li><strong>Cylinder:</strong> V = &pi; r<sup>2</sup> h</li>
+                <li><strong>Sphere:</strong> V = &frac34; &pi; r<sup>3</sup></li>
+                <li><strong>Cone:</strong> V = &frac13; &pi; r<sup>2</sup> h</li>
+            </ul>
+            <p class="area-application">
+                Understanding volume is vital for applications in engineering, fluid dynamics, and packaging.
+            </p>
+        </section>
+
+        <section class="area-units">
+            <h2 class="area-title">Units of Volume</h2>
+            <div class="card-container">
+                <div class="info-card">
+                    <h3 class="info-card-title">Cubic Meter (m³)</h3>
+                    <p class="info-card-description">
+                        It is the standard unit of volume in the International System of Units (SI). It represents the
+                        volume of a cube with each side measuring one meter in length.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Liter (L)</h3>
+                    <p class="info-card-description">
+                        Liter is a metric unit of volume commonly used for measuring liquids. It is defined as the
+                        volume of a cube that is 10 centimeters on each side. One liter is equivalent to 1,000 cubic
+                        centimeters (cm³) or one cubic decimeter (dm³).
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Milliliter (mL)</h3>
+                    <p class="info-card-description">
+                        Milliliter is a metric unit of volume equal to one-thousandth of a liter. It is commonly used
+                        for measuring small quantities of liquids, with 1 mL being equivalent to 1 cubic centimeter
+                        (cm³).
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Cubic Centimeter (cm³)</h3>
+                    <p class="info-card-description">
+                        It is a metric unit of volume defined as the volume of a cube with each side measuring one
+                        centimeter. It is commonly used in scientific contexts and is equivalent to 1 milliliter (mL).
+                        Cubic centimeters are often used to measure small volumes, particularly in chemistry and
+                        medicine.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Gallon (gal)</h3>
+                    <p class="info-card-description">
+                        Gallon (gal) is a unit of volume commonly used in the United States, primarily for measuring
+                        liquids. One US gallon is approximately equivalent to 3.785 liters.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Fluid Ounce (fl oz)</h3>
+                    <p class="info-card-description">
+                        It is a unit of volume commonly used in the United States to measure liquids. One US fluid ounce
+                        is approximately 29.57 milliliters (mL).
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title"> Cubic Yard (yd³) </h3>
+                    <p class="info-card-description">
+                        Cubic Yard (yd³) is a unit of volume commonly used in construction and landscaping, representing
+                        the volume of a cube with sides measuring one yard. One cubic yard is approximately equivalent
+                        to 764.6 liters.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Cubic Feet (ft³) </h3>
+                    <p class="info-card-description">
+                        Cubic Feet (ft³) is a unit of volume commonly used in the United States, representing the volume
+                        of a cube with sides measuring one foot. One cubic foot is approximately equivalent to 28.316
+                        liters.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- AREA INFO  -->
+
+    <!-- converter-html -->
+
+      <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h4>Quick Metric</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Online Convertors</h4>
+                <ul>
+                    <li><a href="area.html">Area Converter</li>
+                    <li><a href="mass.html">Mass Converter</a></li>
+                    <li><a href="length.html">Length Converter</a></li>
+                    <li><a href="temperature.html">Temperature Converter</a></li>
+                    <li><a href="volume.html">Volume Converter</a></li>
+                    <li><a href="currency.html">Currency Converter</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- FOOTER END   -->
+
+    <!-- footer-html start -->
+    <!-- <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>About Us</h2>
+                    <p>Quick Metric is a user-friendly platform that provides fast and accurate metric conversion tools.
+                        It simplifies the process of converting various units, making it easy for users to get precise
+                        results quickly.</p>
+                    <ul class="sci">
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h2>Support</h2>
+                    <ul class="quicklinks">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h2>User Friendly</h2>
+                    <ul class="quicklinks">
+                        <li><a href="#">Scientist</a></li>
+                        <li><a href="#">Students</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h2>Contact Us</h2>
+                    <ul class="info">
+                        <li><span><i class="fa-solid fa-phone"></i></span>
+                            <p><a href="#">+92 345 5678</a></p>
+                        </li>
+                        <li><span><i class="fa-regular fa-envelope"></i></span>
+                            <p><a href="#">codeventures@gmail.com</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyrighttext">
+            <p>&#169; Copyright. All rights reserved.</p>
+        </div>
+    </footer> -->
+
+    <!-- footer-html End -->
+
+
+</body>
+
+<script>
+
+    // Converter-js
+
+    document.getElementById('inputValue').addEventListener('input', function (event) {
+        const inputValue = event.target.value;
+
+        // Remove non-numeric characters
+        const numericValue = inputValue.replace(/[^0-9.]/g, '');
+    });
+
+    function convert() {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        if (isNaN(inputValue) || inputValue <= 0) {
+            document.getElementById('result').innerText = "Please enter a valid number greater than zero.";
+            return;
+        }
+
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+
+        // Conversion factors from various units to cubic meters
+        const conversionToCubicMeters = {
+            'fl-oz': 0.0000295735, // 1 Fluid Ounce = 29.5735 Milliliters
+            'gal': 0.00378541,     // 1 Gallon = 3.78541 Liters
+            'cu-ft': 0.0283168,    // 1 Cubic Foot = 0.0283168 Cubic Meters
+            'cu-yd': 0.764555      // 1 Cubic Yard = 0.764555 Cubic Meters
+        };
+
+        // Conversion factors from cubic meters to various units
+        const conversionFromCubicMeters = {
+            'ml': 1000000,         // 1 Cubic Meter = 1,000,000 Milliliters
+            'l': 1000,             // 1 Cubic Meter = 1,000 Liters
+            'cu-m': 1,             // 1 Cubic Meter = 1 Cubic Meter
+            'cu-ft': 35.3147       // 1 Cubic Meter = 35.3147 Cubic Feet
+        };
+
+        // Check if the units can be converted
+        if (!conversionToCubicMeters[fromUnit] || !conversionFromCubicMeters[toUnit]) {
+            document.getElementById('result').innerText = "Invalid conversion units.";
+            return;
+        }
+
+        // Convert from source unit to cubic meters
+        const valueInCubicMeters = inputValue * conversionToCubicMeters[fromUnit];
+
+        // Convert from cubic meters to target unit
+        const result = valueInCubicMeters * conversionFromCubicMeters[toUnit];
+
+        document.getElementById('result').innerText = `${inputValue} ${fromUnit} = ${result.toFixed(2)} ${toUnit}`;
+
+        // Clear the input field after conversion
+        document.getElementById('inputValue').value = "";
+    }
+
+    // Converter-js
+
+</script>
+
+
+<!-- <script src="volume.converter.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

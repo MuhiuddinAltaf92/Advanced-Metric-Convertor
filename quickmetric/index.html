@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" class="documentlogo" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="style.css">
+    <title>Quick Metric</title>
+    <style>
+        #conversionBox {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        #conversionBox:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        .btn-custom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            border: none;
+            background-color: #4a90e2;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #357abd;
+        }
+
+        .icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* area section */
+        .area-info-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #181852;
+            /* Updated background color */
+            border-radius: 10px;
+            color: #fff;
+            /* White text for all elements */
+        }
+
+        .area-main-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            /* White heading */
+        }
+
+        .area-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            /* White heading */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 50px;
+        }
+
+        .area-description,
+        .area-formulas,
+        .area-application {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .area-formula-list {
+            margin: 15px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+            color: #fff;
+            /* White text for list items */
+        }
+
+        .area-formula-list li {
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Gold color for list items */
+            font-size: 14px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: #09092e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+        }
+
+        .info-card:hover {
+            background-color: #126b7a;
+            transform: translateY(-5px);
+        }
+
+        .info-card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Accent color for card titles */
+        }
+
+        .info-card-description {
+            font-size: 14px;
+            color: #fff;
+            /* White text for card descriptions */
+        }
+
+        .area-title:hover {
+            color: #00d6fc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- ICON SLIDER -->
+    <div class="icon-slider">
+        <div class="icon-container">
+            <div class="icon" title="Area"><img src="./images/iconimage1.jpg" alt="Area"></div>
+            <div class="icon" title="Length"><img src="./images/iconimage2.jpg" alt="Length"></div>
+            <div class="icon" title="Volume"><img src="./images/iconimage3.jpg" alt="Volume"></div>
+            <div class="icon" title="Mass"><img src="./images/iconimage4.jpg" alt="Mass"></div>
+            <div class="icon" title="Temperature"><img src="./images/iconimage5.jpg" alt="Temperature"></div>
+            <div class="icon" title="Time"><img src="./images/iconimage6.jpg" alt="Time"></div>
+            <div class="icon" title="Speed"><img src="./images/iconimage7.jpg" alt="Speed"></div>
+            <div class="icon" title="Energy"><img src="./images/iconimage8.jpg" alt="Energy"></div>
+        </div>
+    </div>
+    <!-- ICON SLIDER END -->
+
+    <!-- CARDS MAIN HEADING  -->
+    <div class="conversion-section">
+        <h2 id="Starters" class="conversion-heading">Quick Conversions</h2>
+        <!-- Content for Starters -->
+    </div>
+    <!-- CARDS MAIN  -->
+    <div class="ag-format-container">
+        <h2 class="services-heading"></h2> <!-- Added Services Heading -->
+
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="area.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Area Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="mass.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Mass Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="length.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Length Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="volume.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Volume Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="temperature.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Temperature Converter</div>
+                </a>
+            </div>
+
+            <div class="ag-courses_item">
+                <a href="currency.html" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Currency Converter</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- CARDS MAIN END -->
+
+    <!-- CONVERSIONS INFO HEADING  -->
+    <div class="conversion-section">
+        <h2 id="Starters" style="font-size: 40px;" class="conversion-heading">Conversion Guide: From Historical Roots to
+            Modern Applications</h2>
+        <!-- Content for Starters -->
+    </div>
+    <!-- CONVERSIONS INFO  -->
+    <section class="area-info-container">
+        <!-- Definitions, Formulas, and Historical Context for Converters -->
+
+        <!-- Area Converter -->
+        <section class="area-definition">
+            <h2 class="area-title">Definition of Area</h2>
+            <p class="area-description">
+                Area is the measure of a two-dimensional surface or shape. It's typically expressed in square units
+                (e.g., square meters, square feet) and is essential for understanding spaces in real estate,
+                agriculture, and design.
+            </p>
+            <p class="area-formulas">
+                Common formulas for calculating area include:
+            </p>
+            <ul class="area-formula-list">
+                <li><strong>Rectangle:</strong> Area = Length × Width</li>
+                <li><strong>Square:</strong> Area = Side²</li>
+                <li><strong>Triangle:</strong> Area = ½ × Base × Height</li>
+                <li><strong>Circle:</strong> Area = π × Radius²</li>
+            </ul>
+            <p class="area-history">
+                The concept of area measurement has roots in ancient civilizations such as Egypt and Mesopotamia. The
+                Egyptians developed early techniques for surveying land, especially after Nile floods, giving rise to
+                the basics of geometry. Area calculations became essential in land ownership, agricultural planning, and
+                later, architectural designs during the Renaissance.
+            </p>
+            <p class="area-theory">
+                Area calculation was formalized by ancient Greek mathematicians like Euclid, whose work laid the
+                foundation for modern geometry. In the 17th century, calculus, introduced by Isaac Newton and Gottfried
+                Wilhelm Leibniz, enhanced the methods for calculating areas under curves, which further advanced
+                mathematical and physical sciences.
+            </p>
+        </section>
+
+        <!-- Mass Converter -->
+        <section class="mass-definition">
+            <h2 class="area-title">Definition of Mass</h2>
+            <p class="mass-description">
+                Mass is the measure of the amount of matter in an object, usually expressed in kilograms or pounds. It
+                is a fundamental property in physics, distinguishing it from weight, which depends on gravitational
+                force.
+            </p>
+            <p class="mass-formulas">
+                Common formulas for mass include:
+            </p>
+            <ul class="mass-formula-list">
+                <li><strong>Newton's Second Law:</strong> Mass = Force ÷ Acceleration</li>
+                <li><strong>Density Formula:</strong> Mass = Density × Volume</li>
+            </ul>
+            <p class="mass-history">
+                The concept of mass was formalized by Isaac Newton in his Laws of Motion. Mass, as a measure of an
+                object’s inertia, plays a central role in both classical and modern physics. The standard kilogram was
+                defined in 1799 and redefined in 2019 based on Planck's constant.
+            </p>
+            <p class="mass-theory">
+                Einstein’s theory of relativity also introduced the concept of mass-energy equivalence (E=mc²), linking
+                mass with energy, revolutionizing the understanding of mass in both quantum mechanics and cosmology.
+            </p>
+        </section>
+
+        <!-- Length Converter -->
+        <section class="length-definition">
+            <h2 class="area-title">Definition of Length</h2>
+            <p class="length-description">
+                Length is the measurement of distance between two points. It is the most basic measurement in geometry
+                and everyday life, commonly expressed in meters, feet, or miles.
+            </p>
+            <p class="length-formulas">
+                Common formulas for calculating length include:
+            </p>
+            <ul class="length-formula-list">
+                <li><strong>Distance Formula:</strong> Distance = √((x₂ - x₁)² + (y₂ - y₁)²) in a 2D plane</li>
+                <li><strong>Perimeter of a Rectangle:</strong> Perimeter = 2(Length + Width)</li>
+            </ul>
+            <p class="length-history">
+                The concept of length dates back to early civilizations. The Egyptian cubit, the Roman mile, and the
+                Anglo-Saxon yard were all based on the human body. The metric system, adopted in 1795, standardized
+                length measurement, with the meter now being defined by the speed of light.
+            </p>
+            <p class="length-theory">
+                The development of geometry by ancient Greeks like Euclid and Pythagoras provided the foundational
+                theory of length, distance, and shapes. Today, length measurement plays a crucial role in scientific
+                fields such as astronomy, where light-years are used to measure vast cosmic distances.
+            </p>
+        </section>
+
+        <!-- Temperature Converter -->
+        <section class="temperature-definition">
+            <h2 class="area-title">Definition of Temperature</h2>
+            <p class="temperature-description">
+                Temperature is the measure of thermal energy within a system or object, usually expressed in degrees
+                Celsius, Fahrenheit, or Kelvin. It is a key concept in thermodynamics.
+            </p>
+            <p class="temperature-formulas">
+                Common formulas for temperature conversions include:
+            </p>
+            <ul class="temperature-formula-list">
+                <li><strong>Celsius to Fahrenheit:</strong> F = (C × 9/5) + 32</li>
+                <li><strong>Fahrenheit to Celsius:</strong> C = (F - 32) × 5/9</li>
+                <li><strong>Celsius to Kelvin:</strong> K = C + 273.15</li>
+            </ul>
+            <p class="temperature-history">
+                The modern Celsius and Fahrenheit scales were developed by Anders Celsius and Daniel Fahrenheit in the
+                18th century. Lord Kelvin later introduced the absolute temperature scale (Kelvin), which plays a
+                fundamental role in physics and chemistry.
+            </p>
+            <p class="temperature-theory">
+                The kinetic theory of gases, developed in the 19th century, linked temperature to the motion of
+                particles. This understanding is critical in fields such as thermodynamics and statistical mechanics.
+            </p>
+        </section>
+
+        <!-- Currency Converter -->
+        <section class="currency-definition">
+            <h2 class="area-title">Definition of Currency</h2>
+            <p class="currency-description">
+                Currency is a system of money in common use within a country, represented in forms such as dollars,
+                euros, or yen. It allows for the exchange of goods and services in a standardized system.
+            </p>
+            <p class="currency-formulas">
+                Currency conversions depend on exchange rates:
+            </p>
+            <ul class="currency-formula-list">
+                <li><strong>Conversion Formula:</strong> Amount in Currency B = (Amount in Currency A) × (Exchange Rate)
+                </li>
+            </ul>
+            <p class="currency-history">
+                The first coins were minted in Lydia (modern-day Turkey) around 600 BCE, and paper money originated in
+                China during the Tang Dynasty. With globalization, currency trading and exchange rates became integral
+                to modern economies.
+            </p>
+            <p class="currency-theory">
+                Currency values fluctuate based on supply and demand, influenced by factors such as inflation, interest
+                rates, and geopolitical events. Economic theories such as Keynesian economics and monetarism provide
+                insights into currency management and exchange rate systems.
+            </p>
+        </section>
+
+        <!-- Volume Converter -->
+        <section class="volume-definition">
+            <h2 class="area-title">Definition of Volume</h2>
+            <p class="volume-description">
+                Volume is the amount of space occupied by a three-dimensional object, expressed in cubic units such as
+                liters, cubic meters, or gallons. Volume is critical in fields ranging from engineering to cooking.
+            </p>
+            <p class="volume-formulas">
+                Common formulas for calculating volume include:
+            </p>
+            <ul class="volume-formula-list">
+                <li><strong>Cuboid:</strong> Volume = Length × Width × Height</li>
+                <li><strong>Cylinder:</strong> Volume = π × Radius² × Height</li>
+                <li><strong>Sphere:</strong> Volume = 4/3 × π × Radius³</li>
+            </ul>
+            <p class="volume-history">
+                Ancient civilizations used volume measurements in commerce, particularly for grain and liquid trade. The
+                Romans had standardized systems, while modern volume measurement evolved with the metric system in the
+                18th century.
+            </p>
+            <p class="volume-theory">
+                Volume calculations are vital in fluid dynamics and engineering. Archimedes’ principle introduced the
+                concept of buoyancy, which ties the volume of displaced fluid to an object's weight, a cornerstone of
+                hydrostatics.
+            </p>
+        </section>
+
+        <!-- Card Section for Units of Measurement -->
+        <section class="area-units">
+            <h2 class="area-title">Units of Measurement</h2>
+            <div class="card-container">
+                <!-- Area Units -->
+                <div class="info-card">
+                    <h3 class="info-card-title">Square Meters</h3>
+                    <p class="info-card-description">The SI unit for measuring area, commonly used in real estate and
+                        land measurement.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Square Feet</h3>
+                    <p class="info-card-description">Common in real estate, a square foot represents the area of a
+                        square with sides of one foot.</p>
+                </div>
+                <!-- Mass Units -->
+                <div class="info-card">
+                    <h3 class="info-card-title">Kilograms</h3>
+                    <p class="info-card-description">The base SI unit of mass, used worldwide for most weight
+                        measurements.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Pounds</h3>
+                    <p class="info-card-description">A unit of mass used predominantly in the United States, derived
+                        from the Roman libra.</p>
+                </div>
+                <!-- Length Units -->
+                <div class="info-card">
+                    <h3 class="info-card-title">Meters</h3>
+                    <p class="info-card-description">The SI base unit of length, widely used in science, industry, and
+                        everyday life.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Feet</h3>
+                    <p class="info-card-description">Commonly used in the United States, a foot is equal to 12 inches or
+                        0.3048 meters.</p>
+                </div>
+                <!-- Temperature Units -->
+                <div class="info-card">
+                    <h3 class="info-card-title">Degrees Celsius</h3>
+                    <p class="info-card-description">The most widely used temperature scale globally, ideal for daily
+                        weather and scientific calculations.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Degrees Fahrenheit</h3>
+                    <p class="info-card-description">Primarily used in the United States for everyday weather
+                        measurements.</p>
+                </div>
+                <!-- Currency Units -->
+                <div class="info-card">
+                    <h3 class="info-card-title">US Dollar (USD)</h3>
+                    <p class="info-card-description">The primary currency of the United States, one of the most traded
+                        currencies in the world.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Euro (EUR)</h3>
+                    <p class="info-card-description">The official currency of the Eurozone, used by 19 of the 27 EU
+                        member states.</p>
+                </div>
+                <!-- Volume Units -->
+                <div class="info-card">
+                    <h3 class="info-card-title">Liters</h3>
+                    <p class="info-card-description">The most commonly used unit of volume for liquids in most countries
+                        around the world.</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Cubic Meters</h3>
+                    <p class="info-card-description">The SI unit of volume, crucial in measuring large spaces, such as
+                        rooms and swimming pools.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+    <!-- CONVERSIONS INFO  -->
+
+
+
+    <!-- FAQS  -->
+    <div class="faq-container">
+        <h2 class="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-1" aria-expanded="false">
+                    <span class="faq-accordion-title">How do I enter numbers in Scientific Notation?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>Scientific notation expresses large or small numbers using powers of 10. The format is a × 10^n,
+                        where a is a decimal between 1 and 10, and n is the number of places the decimal is shifted.<br>
+                        <strong>Example:</strong><br>
+                        3,000 = 3 × 10³<br>
+                        0.00045 = 4.5 × 10⁻⁴<br>
+                        It's useful for handling extreme values in fields like physics and astronomy.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-2" aria-expanded="false">
+                    <span class="faq-accordion-title">What is a knot? What is a nautical mile?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>A knot is a unit of speed equal to one nautical mile per hour. A nautical mile is a unit of
+                        distance used in marine and air navigation, equal to 1.852 kilometers or 1.15078 miles.<br>
+                        <strong>History:</strong><br> The term "knot" originated from sailors in the 17th century
+                        measuring speed with a rope marked by knots.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-3" aria-expanded="false">
+                    <span class="faq-accordion-title">How do I convert between inches of rain and millimeters of
+                        rain?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>To convert rainfall:<br>
+                        1 inch = 25.4 millimeters<br>
+                        1 millimeter = 0.03937 inches<br>
+                        <strong>Formula:</strong><br>
+                        Inches to mm: mm = inches × 25.4<br>
+                        mm to Inches: inches = mm × 0.03937
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-4" aria-expanded="false">
+                    <span class="faq-accordion-title">What is the difference between the long ton, short ton, and metric
+                        ton?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p><strong>Long Ton:</strong> Used in the UK, equals 2,240 pounds (1,016.05 kg).<br>
+                        <strong>Short Ton:</strong> Common in the US, equals 2,000 pounds (907.18 kg).<br>
+                        <strong>Metric Ton:</strong> Equals 1,000 kilograms (2,204.62 pounds).<br>
+                        These differences come from varying systems of measurements like the Imperial and metric
+                        systems.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button id="faq-accordion-button-5" aria-expanded="false">
+                    <span class="faq-accordion-title">At what temperature are Celsius and Fahrenheit the same?</span>
+                    <span class="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq-accordion-content">
+                    <p>Celsius and Fahrenheit are the same at -40 degrees.<br>
+                        <strong>Formula:</strong><br>
+                        To convert: F = (9/5 × C) + 32<br>
+                        Set F = C and solve to find C = -40.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQS END  -->
+
+    <!-- FOOTER START   -->
+    <!-- Remove the container to extend the Footer to full width. -->
+    <div class="my-5">
+
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <div class="footer-column">
+                        <h4>Quick Metric</h4>
+                        <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                    </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Online Convertors</h4>
+                        <ul>
+                            <li><a href="area.html">Area Converter</li>
+                            <li><a href="mass.html">Mass Converter</a></li>
+                            <li><a href="length.html">Length Converter</a></li>
+                            <li><a href="temperature.html">Temperature Converter</a></li>
+                            <li><a href="volume.html">Volume Converter</a></li>
+                            <li><a href="currency.html">Currency Converter</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- FOOTER END   -->
+
+
+
+
+
+
+
+
+
+
+
+        <script src="bootstrap.bundle.min.js"></script>
+        <script>
+            // FAQS START 
+            const faqItems = document.querySelectorAll(".faq-accordion button");
+
+            function toggleFaqAccordion() {
+                const faqToggle = this.getAttribute('aria-expanded');
+
+                // Close all accordion items
+                faqItems.forEach(item => item.setAttribute('aria-expanded', 'false'));
+
+                // Toggle the current item
+                if (faqToggle === 'false') {
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            }
+
+            faqItems.forEach(item => item.addEventListener('click', toggleFaqAccordion));
+
+
+            // FAQS END 
+
+        </script>
+
+</body>
+
+</html>

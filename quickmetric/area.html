@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="style.css">
+    <title>Area Convertor</title>
+<style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font Import for Cursive Text */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400&display=swap');
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #4a90e2;
+    font-size: 3rem;
+    text-shadow: 0 0 8px rgba(74, 144, 226, 0.7);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+header h1:hover {
+    color: #9b59b6;
+    text-shadow: 0 0 15px rgba(155, 89, 182, 0.9);
+}
+
+/* Main Layout */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 15px;
+}
+
+/* Converter Section Styles */
+#converter {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+#converter h2 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus, input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #357abd;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Result Styles */
+#result-container {
+    margin-top: 20px;
+}
+
+#result-heading {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#result {
+    font-size: 1.2rem;
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+/* Conversion Info Styles */
+#conversion-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+#conversion-info h3 {
+    color: #9b59b6;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+#conversion-info ul {
+    list-style-type: none;
+}
+
+#conversion-info li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+#conversion-info li:hover {
+    color: #4a90e2;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+
+    #converter, #conversion-info {
+        flex: 1;
+    }
+}
+
+/* Area Section */
+.area-info-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #181852; /* Updated background color */
+    border-radius: 10px;
+    color: #fff; /* White text for all elements */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.area-main-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff; /* White heading */
+}
+
+.area-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff; /* White heading */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+.area-description,
+.area-formulas,
+.area-application {
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.area-formula-list {
+    margin: 15px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+    color: #fff; /* White text for list items */
+}
+
+.area-formula-list li {
+    margin-bottom: 10px;
+    color: #00d9ff; /* Gold color for list items */
+    font-size: 14px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background-color: #09092e;
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+}
+
+.info-card:hover {
+    background-color: #126b7a;
+    transform: translateY(-5px);
+}
+
+.info-card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #00d9ff; /* Accent color for card titles */
+}
+
+.info-card-description {
+    font-size: 14px;
+    color: #fff; /* White text for card descriptions */
+}
+
+.area-title:hover {
+    color: #00d6fc;
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+</style>
+</head>
+<body>
+    <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html ">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+<!-- AREA CONVERSION  -->
+    <header>
+        <h1>" Area Conversion Tool "</h1>
+    </header>
+    <main>
+        <section id="converter">
+            <h2>Convert Area Units</h2>
+
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="squareInches">Square Inches</option>
+                <option value="squareFeet">Square Feet</option>
+                <option value="squareYards">Square Yards</option>
+                <option value="acres">Acres</option>
+                <option value="squareMiles">Square Miles</option>
+            </select>
+
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="squareMillimeters">Square Millimeters</option>
+                <option value="squareMeters">Square Meters</option>
+                <option value="hectares">Hectares</option>
+                <option value="squareKilometers">Square Kilometers</option>
+            </select>
+
+            <label for="inputValue">Value (<span id="fromUnitLabel">Square Inches</span>):</label>
+            <input type="text" id="inputValue" placeholder="Enter value ex: 1 2 3 4">
+
+            <button onclick="convert()">Convert</button>
+
+            <div id="result-container">
+                <div id="result-heading">Conversion Result:</div>
+                <div id="result"></div>
+            </div>
+        </section>
+
+        <aside id="conversion-info">
+            <h3>Conversion Factors</h3>
+            <ul>
+                <li>1 Square Inch = 645.16 Square Millimeters</li>
+                <li>1 Square Foot = 0.092903 Square Meters</li>
+                <li>1 Square Yard = 0.836127 Square Meters</li>
+                <li>1 Acre = 4046.86 Square Meters</li>
+                <li>1 Square Mile = 2.58999 Square Kilometers</li>
+            </ul>
+        </aside>
+    </main>
+<!-- AREA CONVERSION  -->
+
+
+ <!-- AREA INFO  -->
+ <section class="area-info-container">
+    <!-- <h1 class="area-main-title">Area Information</h1> -->
+
+    <section class="area-definition">
+        <h2 class="area-title">Definition of Area</h2>
+        <p class="area-description">
+            Area is the measure of the space occupied by a two-dimensional shape, expressed in square units (e.g., square meters, square feet). 
+            It quantifies how much surface a shape covers.
+        </p>
+        <p class="area-formulas">
+            Common formulas for calculating area include:
+        </p>
+        <ul class="area-formula-list">
+            <li><strong>Rectangle:</strong> Area = Length × Width</li>
+            <li><strong>Square:</strong> Area = Side²</li>
+            <li><strong>Triangle:</strong> Area = ½ × Base × Height</li>
+            <li><strong>Circle:</strong> Area = π × Radius²</li>
+        </ul>
+        <p class="area-application">
+            Understanding area is essential for applications in fields such as land measurement, construction, and design.
+        </p>
+    </section>
+
+    <section class="area-units">
+        <h2 class="area-title">Units of Area</h2>
+        <div class="card-container">
+            <div class="info-card">
+                <h3 class="info-card-title">Square Feet</h3>
+                <p class="info-card-description">
+                    A square foot is a unit of area commonly used in real estate. It is defined as the area of a square with sides of one foot.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Acre</h3>
+                <p class="info-card-description">
+                    An acre is commonly used to measure land area. It is equivalent to 43,560 square feet or 4,047 square meters.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Hectare</h3>
+                <p class="info-card-description">
+                    The hectare is a metric unit for land measurement. It equals 10,000 square meters or 2.471 acres.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Square Mile</h3>
+                <p class="info-card-description">
+                    A square mile is a large unit of area often used to measure large geographical regions.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Square Meter</h3>
+                <p class="info-card-description">
+                    The square meter is the SI unit of area, used for measuring smaller plots of land.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Square Yard</h3>
+                <p class="info-card-description">
+                    A square yard is a unit of area equal to 9 square feet, commonly used in the U.S. and U.K.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Square Inch</h3>
+                <p class="info-card-description">
+                    A square inch is used in the U.S. and U.K. One square inch equals 6.4516 square centimeters.
+                </p>
+            </div>
+            <div class="info-card">
+                <h3 class="info-card-title">Millimeter</h3>
+                <p class="info-card-description">
+                    The square millimeter is used for very small areas. One square millimeter equals 0.001 square meters.
+                </p>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<!-- AREA INFO  -->
+
+
+<!-- CARDS MAIN HEADING  -->
+<div class="conversion-section">
+    <h2 id="Starters" class="conversion-heading">More Conversions</h2>
+    <!-- Content for Starters -->
+</div>
+<!-- CARDS MAIN  -->
+<div class="ag-format-container">
+    <h2 class="services-heading"></h2> <!-- Added Services Heading -->
+
+    <div class="ag-courses_box">
+        <div class="ag-courses_item">
+            <a href="area.html" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">Area Converter</div>
+            </a>
+        </div>
+
+        <div class="ag-courses_item">
+            <a href="mass.html" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">Mass Converter</div>
+            </a>
+        </div>
+
+        <div class="ag-courses_item">
+            <a href="length.html" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">Length Converter</div>
+            </a>
+        </div>
+
+        <div class="ag-courses_item">
+            <a href="volume.html" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">Volume Converter</div>
+            </a>
+        </div>
+
+        <div class="ag-courses_item">
+            <a href="temperature.html" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">Temperature Converter</div>
+            </a>
+        </div>
+
+        <div class="ag-courses_item">
+            <a href="currency.html" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">Currency Converter</div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- CARDS MAIN END -->
+
+
+
+    <!-- FAQS  -->
+<div class="faq-container">
+    <h2 class="faq-heading">Faqs of Area Conversion</h2>
+    <div class="faq-accordion">
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-1" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert Square Inches to Square Millimeters?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>To convert from Square Inches to Square Millimeters, you can use the conversion factor:
+                    <strong>1 Square Inch = 645.16 Square Millimeters</strong>.<br>
+                    <strong>Formula:</strong><br>
+                    Square Millimeters = Square Inches × 645.16<br>
+                    Example: 5 Square Inches = 5 × 645.16 = 3,225.8 Square Millimeters.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-2" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert Square Feet to Square Meters?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>To convert from Square Feet to Square Meters, use the conversion factor:
+                    <strong>1 Square Foot = 0.092903 Square Meters</strong>.<br>
+                    <strong>Formula:</strong><br>
+                    Square Meters = Square Feet × 0.092903<br>
+                    Example: 10 Square Feet = 10 × 0.092903 = 0.92903 Square Meters.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-3" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert Square Yards to Square Meters?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>To convert from Square Yards to Square Meters, the conversion factor is:
+                    <strong>1 Square Yard = 0.836127 Square Meters</strong>.<br>
+                    <strong>Formula:</strong><br>
+                    Square Meters = Square Yards × 0.836127<br>
+                    Example: 3 Square Yards = 3 × 0.836127 = 2.508381 Square Meters.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-4" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert Acres to Square Meters?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>To convert from Acres to Square Meters, use the conversion factor:
+                    <strong>1 Acre = 4046.86 Square Meters</strong>.<br>
+                    <strong>Formula:</strong><br>
+                    Square Meters = Acres × 4046.86<br>
+                    Example: 2 Acres = 2 × 4046.86 = 8093.72 Square Meters.
+                </p>
+            </div>
+        </div>
+        <div class="faq-accordion-item">
+            <button id="faq-accordion-button-5" aria-expanded="false">
+                <span class="faq-accordion-title">How do I convert Square Miles to Square Kilometers?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-accordion-content">
+                <p>To convert from Square Miles to Square Kilometers, use the conversion factor:
+                    <strong>1 Square Mile = 2.58999 Square Kilometers</strong>.<br>
+                    <strong>Formula:</strong><br>
+                    Square Kilometers = Square Miles × 2.58999<br>
+                    Example: 4 Square Miles = 4 × 2.58999 = 10.35996 Square Kilometers.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQS END  -->
+ 
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h4>Quick Metric</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Online Convertors</h4>
+                <ul>
+                    <li><a href="area.html">Area Converter</li>
+                    <li><a href="mass.html">Mass Converter</a></li>
+                    <li><a href="length.html">Length Converter</a></li>
+                    <li><a href="temperature.html">Temperature Converter</a></li>
+                    <li><a href="volume.html">Volume Converter</a></li>
+                    <li><a href="currency.html">Currency Converter</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- FOOTER END   -->
+
+
+
+
+
+
+
+
+
+ 
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
+
+    <script>
+         
+        document.getElementById('inputValue').addEventListener('input', function (event) {
+            const inputValue = event.target.value;
+
+            // Remove non-numeric characters
+            const numericValue = inputValue.replace(/[^0-9.]/g, '');
+
+            // Check if input has changed
+            if (inputValue !== numericValue) {
+                // Show prompt message
+                alert("Choose from numbers.");  // Prompt for non-numeric input
+                // Update the input field to contain only numeric characters
+                event.target.value = numericValue;
+            }
+        });
+
+        function convert() {
+            const inputValue = parseFloat(document.getElementById('inputValue').value);
+            if (isNaN(inputValue) || inputValue <= 0) {
+                document.getElementById('result').innerText = "Please enter a valid number.";
+                return;
+            }
+
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            // Conversion factors from various units to square meters
+            const conversionToSquareMeters = {
+                'squareInches': 0.00064516,
+                'squareFeet': 0.092903,
+                'squareYards': 0.836127,
+                'acres': 4046.86,
+                'squareMiles': 2589990
+            };
+
+            // Conversion factors from square meters to various units
+            const conversionFromSquareMeters = {
+                'squareMillimeters': 1000000,
+                'squareMeters': 1,
+                'hectares': 0.0001,
+                'squareKilometers': 0.000001
+            };
+
+            // Check if the units can be converted
+            if (!conversionToSquareMeters[fromUnit] || !conversionFromSquareMeters[toUnit]) {
+                document.getElementById('result').innerText = "Invalid conversion units.";
+                return;
+            }
+
+            // Convert from source unit to square meters
+            const valueInSquareMeters = inputValue * conversionToSquareMeters[fromUnit];
+
+            // Convert from square meters to target unit
+            const result = valueInSquareMeters * conversionFromSquareMeters[toUnit];
+
+            document.getElementById('result').innerText = `${inputValue} ${fromUnit} = ${result.toFixed(2)} ${toUnit}`;
+
+            // Clear the input field after conversion
+            document.getElementById('inputValue').value = "";
+        }
+        
+        // FAQS START 
+        const faqItems = document.querySelectorAll(".faq-accordion button");
+
+        function toggleFaqAccordion() {
+            const faqToggle = this.getAttribute('aria-expanded');
+
+            // Close all accordion items
+            faqItems.forEach(item => item.setAttribute('aria-expanded', 'false'));
+
+            // Toggle the current item
+            if (faqToggle === 'false') {
+                this.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        faqItems.forEach(item => item.addEventListener('click', toggleFaqAccordion));
+
+
+        // FAQS END 
+
+    
+    </script>
+</html>

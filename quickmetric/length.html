@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" class="documentlogo" href="../quickmetric/images/gradient-accounting-logo-template.png" />
+    <link rel="stylesheet" href="style.css">
+    <title>Length Converter</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Font Import for Cursive Text */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400&display=swap');
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #4a90e2;
+            font-size: 3rem;
+            text-shadow: 0 0 8px rgba(74, 144, 226, 0.7);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        header h1:hover {
+            color: #9b59b6;
+            text-shadow: 0 0 15px rgba(155, 89, 182, 0.9);
+        }
+
+        /* Main Layout */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        /* Converter Section Styles */
+        .converter {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .converter h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #4a90e2;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #4a90e2;
+            font-size: 1.2rem;
+        }
+
+        /* Conversion Info Styles */
+        #conversion-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #conversion-info h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #conversion-info ul {
+            list-style-type: none;
+        }
+
+        #conversion-info li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        #conversion-info li:hover {
+            color: #4a90e2;
+            cursor: pointer;
+        }
+
+        /* History and Articles Section */
+        #history,
+        #articles,
+        #faqs {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #history h3,
+        #articles h3,
+        #faqs h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        #history ul,
+        #articles ul,
+        #faqs ul {
+            list-style-type: none;
+        }
+
+        #history li,
+        #articles li,
+        #faqs li {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media screen and (min-width: 768px) {
+            main {
+                flex-direction: row;
+            }
+
+            .converter,
+            #conversion-info,
+            #history,
+            #articles,
+            #faqs {
+                flex: 1;
+            }
+        }
+
+        /* area section */
+        .length-info-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #181852;
+            /* Updated background color */
+            border-radius: 10px;
+            color: #fff;
+            /* White text for all elements */
+        }
+
+        .length-main-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            /* White heading */
+        }
+
+        .length-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            /* White heading */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 50px;
+        }
+
+        .length-description,
+        .length-formulas,
+        .length-application {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .length-formula-list {
+            margin: 15px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+            color: #fff;
+            /* White text for list items */
+        }
+
+        .length-formula-list li {
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Gold color for list items */
+            font-size: 14px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: #09092e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(1, 4, 34, 0.3);
+        }
+
+        .info-card:hover {
+            background-color: #126b7a;
+            transform: translateY(-5px);
+        }
+
+        .info-card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #00d9ff;
+            /* Accent color for card titles */
+        }
+
+        .info-card-description {
+            font-size: 14px;
+            color: #fff;
+            /* White text for card descriptions */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR START -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./images/gradient-accounting-logo-template.png" alt="Logo" class="navbar-logo">
+                </a>
+                <a class="navbar-brand" href="index.html">
+                    <span class="logo-part quick">Quick</span> <span class="logo-part metric">Metric</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Conversions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="area.html">Area</a></li>
+                                <li><a class="dropdown-item" href="length.html">Length</a></li>
+                                <li><a class="dropdown-item" href="volume.html">Volume</a></li>
+                                <li><a class="dropdown-item" href="mass.html">Mass</a></li>
+                                <li><a class="dropdown-item" href="temperature.html">Temperature</a></li>
+                                <li><a class="dropdown-item" href="currency.html">Currency</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="resources.html">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- NAVBAR END -->
+
+    <header>
+        <h1>" Length Converter "</h1>
+    </header>
+
+    <main>
+        <section class="converter">
+            <h2>Length Converter</h2>
+            <label for="value">Value:</label>
+            <input type="number" id="value" placeholder="Enter value">
+
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="Inches" selected>Inches</option>
+                <option value="Millimeters">Millimeters</option>
+                <option value="Feet">Feet</option>
+                <option value="Meters">Meters</option>
+                <option value="Yards">Yards</option>
+                <option value="Miles">Miles</option>
+                <option value="Kilometers">Kilometers</option>
+            </select>
+
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="Inches">Inches</option>
+                <option value="Millimeters" selected>Millimeters</option>
+                <option value="Feet">Feet</option>
+                <option value="Meters">Meters</option>
+                <option value="Yards">Yards</option>
+                <option value="Miles">Miles</option>
+                <option value="Kilometers">Kilometers</option>
+            </select>
+
+            <button id="convertButton">Convert</button>
+
+            <div id="result">
+                <h2>Conversion Result:</h2>
+            </div>
+        </section>
+
+        <section id="conversion-info">
+            <h3>Conversion Factors</h3>
+            <ul>
+                <li>1 Inch (in) = 25.4 Millimeters (mm)</li>
+                <li>1 Foot (ft) = 0.305 Meters (m)</li>
+                <li>1 Yard (yd) = 0.914 Meters (m)</li>
+                <li>1 Mile (mi) = 1.609 Kilometers (km)</li>
+            </ul>
+        </section>
+    </main>
+
+    <section class="length-info-container">
+        <!-- <h1 class="area-main-title">Area Information</h1> -->
+
+        <section class="length-definition">
+            <h2 class="length-title">Definition of Length</h2>
+            <p class="length-description">
+                Length is a measure of the distance between two points in space. In physical terms, it represents the
+                extent of an object or the space it occupies along a particular dimension. It is typically measured in
+                units like meters (m), centimeters (cm), or feet (ft), depending on the system of measurement (metric or
+                imperial).
+            </p>
+            <p class="length-formulas">
+                Common formulas for calculating length include:
+            </p>
+            <ul class="length-formula-list">
+                <li><strong>Perimeter of a Rectangle:</strong> P=2(L+W) </li>
+                <li><strong>Circumference of a Circle:</strong> C=2πr</li>
+                <li><strong>Arc Length of a Circle (Sector):</strong> L=rθ</li>
+            </ul>
+            <p class="length-application">
+                Understanding length is essential for applications in fields such as land measurement, construction, and
+                design.
+            </p>
+        </section>
+
+        <section class="length-units">
+            <h2 class="length-title">Units of Length</h2>
+            <div class="card-container">
+                <div class="info-card">
+                    <h3 class="info-card-title">Inches</h3>
+                    <p class="info-card-description">
+                        An inch is a unit of length in the imperial system, equal to <b>1/12th of a foot</b> or <b>25.4
+                            millimeters</b>. It's commonly used in the U.S. and UK for measuring short distances. The
+                        symbol is <b>in</b> or <b>"</b> (e.g., 12").
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Millimeters</h3>
+                    <p class="info-card-description">
+                        A millimeter (mm) is a unit of length in the metric system, equal to <b>1/1000th of a meter</b>.
+                        It is commonly used to measure small distances or dimensions, such as the thickness of materials
+                        or tiny objects. The symbol for millimeter is <b>mm</b>.
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Feet</h3>
+                    <p class="info-card-description">
+                        A foot (plural: feet) is a unit of length in the imperial and U.S. customary systems, equal to
+                        <b>12 inches</b> or <b>0.3048 meters</b>. It is commonly used to measure height, length, or
+                        short distances, especially in the U.S. The symbol for foot is ft or a single prime ('), as in 5
+                        feet (5').
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Meters</h3>
+                    <p class="info-card-description">
+                        A meter (m) is the base unit of length in the metric system, equal to <b>100 centimeters</b> or
+                        <b>1,000 millimeters</b>. It is commonly used worldwide to measure length or distance, and is
+                        defined as the distance light travels in a vacuum in <b>1/299,792,458 seconds</b>. The symbol
+                        for meter is m
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Yards</h3>
+                    <p class="info-card-description">
+                        A yard is a unit of length in the imperial and U.S. customary systems, equal to <b>3 feet</b> or
+                        <b>3 feet</b>. In metric terms, it is equivalent to <b>0.9144 meters</b>. Yards are often used
+                        to measure larger distances in fields such as sports, construction, and fabric. The symbol for
+                        yard is yd.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Miles</h3>
+                    <p class="info-card-description">
+                        A mile is a unit of length in the imperial and U.S. customary systems, equal to <b>5,280
+                            feet</b> or <b>1,760 yards</b>. In metric terms, one mile is approximately <b>1.609
+                            kilometers</b>. Miles are commonly used to measure long distances, especially in road
+                        travel. The symbol for mile is **mi**.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-card-title">Kilometers</h3>
+                    <p class="info-card-description">
+                        A kilometer (km) is a unit of length in the metric system, equal to <b>1,000 meters</b>. It is
+                        commonly
+                        used to measure longer distances, such as those between cities or for geographic purposes. The
+                        symbol for kilometer is km, and it is equivalent to approximately <b>0.621 miles</b>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h4>Quick Metric</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Conversion Guide</a></li>
+
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Online Convertors</h4>
+                <ul>
+                    <li><a href="area.html">Area Converter</li>
+                    <li><a href="mass.html">Mass Converter</a></li>
+                    <li><a href="length.html">Length Converter</a></li>
+                    <li><a href="temperature.html">Temperature Converter</a></li>
+                    <li><a href="volume.html">Volume Converter</a></li>
+                    <li><a href="currency.html">Currency Converter</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/muhiuddin-altaf-2450b1319/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- FOOTER END   -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#convertButton').click(function () {
+                var value = parseFloat($('#value').val());
+                var fromUnit = $('#fromUnit').val();
+                var toUnit = $('#toUnit').val();
+
+                if (isNaN(value)) {
+                    $('#result').text('Please enter a valid number.');
+                    return;
+                }
+
+                if (fromUnit === toUnit) {
+                    $('#result').text(value + ' ' + fromUnit);
+                    return;
+                }
+
+                var result;
+
+                if (fromUnit === 'Inches' && toUnit === 'Millimeters') {
+                    result = value * 25.4;
+                } else if (fromUnit === 'Millimeters' && toUnit === 'Inches') {
+                    result = value / 25.4;
+                }
+
+                if (fromUnit === 'Feet' && toUnit === 'Meters') {
+                    result = value * 0.305;
+                } else if (fromUnit === 'Meters' && toUnit === 'Feet') {
+                    result = value / 0.305;
+                }
+
+                if (fromUnit === 'Yards' && toUnit === 'Meters') {
+                    result = value * 0.914;
+                } else if (fromUnit === 'Meters' && toUnit === 'Yards') {
+                    result = value / 0.914;
+                }
+
+                if (fromUnit === 'Miles' && toUnit === 'Kilometers') {
+                    result = value * 1.609;
+                } else if (fromUnit === 'Kilometers' && toUnit === 'Miles') {
+                    result = value / 1.609;
+                }
+
+                $('#result').text(result.toFixed(2) + ' ' + toUnit);
+            });
+        });
+    </script>
+</body>
+
+</html>
